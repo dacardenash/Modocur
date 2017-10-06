@@ -1,4 +1,4 @@
-class Mensaje():
+class Mensajes():
 
 	menu = {
 		"opcion1.1" : "1. Registrese",
