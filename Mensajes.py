@@ -13,6 +13,3 @@ class Mensajes():
     	""",
     	"operation" : "Seleccione la operación deseada: "
 	}
-
-
-	
