@@ -1,13 +1,15 @@
-#_ guion bajo es para representar que un metodo o varible es privado
-
 import sys
-from Mensaje import Mensaje
+from Mensajes import Mensajes
 from Instructor import Instructor
 from Estudiante import Estudiante
 
 class Main():
 
 	def __init__(self):
+		"1": self.sing_up,
+       	"2": self.sing_in,
+       	"3": self.read_txt,
+       	"4": self.salir,
 
 
 	def poblar_txt(self):
@@ -18,19 +20,10 @@ class Main():
 			Instructor.poblar_usuario(instruc)
 		print(Instructor.mostrar_usuarios())
 
-	def menu(self):
-		print("""
-			|---------------------------------------------------------------------------------------|
-			|------------------------------ Bienvenido a SIA 2.0    --------------------------------|
-			|---------------------------------------------------------------------------------------|
-			""")
-		print(Mensaje.menu['opcion1.1'])
-		print(Mensaje.menu['opcion1.2'])
-		print(Mensaje.menu['opcion1.3'])
-		print(Mensaje.menu['opcion1.4'])
-		print(Mensaje.menu['opcion1.5'])
+	""" def run(self):
+		print(Mensajes.mensaje.get("menu"))
 
-		res = input(Mensaje.label['1'])
+		res = input(Mensajes.mensaje.get("operation"))
 
 		if res == '1':
 			#registrar usuario- tipo estudiante
@@ -50,6 +43,7 @@ class Main():
 			sys.exit()
 		else:
 			print("Operacion invalida")	
+	""" 
 
 	def menu_instructor(self):
 		print("""
@@ -66,6 +60,5 @@ class Main():
 			""")
 
 if __name__ == "__main__":
-	#poblar_txt()
-	Main().menu()
+	Main().run()
 

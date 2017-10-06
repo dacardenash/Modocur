@@ -1,18 +1,18 @@
 class Mensajes():
 
-	menu = {
-		"opcion1.1" : "1. Registrese",
-		"opcion1.2" : "2. Ingresar",
-		"opcion1.3" : "3. Poblar instructores desde txt",
-		"opcion1.4" : "4. Poblar datos",
-		"opcion1.5" : "5. Salir"
+	mensaje = {
+		"menu" : """
+			|---------------------------------------------------------------------------------------|
+			|------------------------------ Bienvenido a Modocur -----------------------------------|
+			|---------------------------------------------------------------------------------------|
+    		Operaciones
+    		1. Registrarse
+    		2. Ingresar
+    		3. Ingresar datos ficticios desde txt
+    		4. Salir
+    	""",
+    	"operation" : "Seleccione la operación deseada"
 	}
 
-	label = {
-		"1" : "Ingrese una operacion: ",
-		"2" : "2. Ingresar",
-		"3" : "3. Poblar instructores desde txt",
-		"4" : "4. Poblar datos",
-		"5" : "5. Salir"
-	}
+
 	
