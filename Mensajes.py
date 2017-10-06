@@ -11,7 +11,7 @@ class Mensajes():
     		3. Ingresar datos ficticios desde txt
     		4. Salir
     	""",
-    	"operation" : "Seleccione la operación deseada"
+    	"operation" : "Seleccione la operación deseada: "
 	}
 
 
