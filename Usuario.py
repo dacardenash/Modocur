@@ -38,7 +38,8 @@ class Usuario:
 	def set_fecha_nacimiento(self, fecha_de_nacimiento):
 		self._fecha_nacimiento = fecha_de_nacimiento
     
-    """def guardar_instructor(self, lista, list_usuario):
+"""
+    def guardar_instructor(self, lista, list_usuario):
 		lista.append(self)
 		list_usuario.append(self)
 

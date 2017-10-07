@@ -33,11 +33,11 @@ class Main():
 		return Mensajes.mensaje.get("menu_estudiante")
 
 	def sing_up(self):
-		nombre = input(Mensajes.mensaje.get("input_name"))
-		apellido = input(Mensajes.mensaje.get("input_lastname"))
-		correo = input(Mensajes.mensaje.get("input_mail"))
-		clave = input(Mensajes.mensaje.get("input_key"))
-		año_de_nacimiento = input(Mensajes.mensaje.get("birth_date"))
+		self.nombre = input(Mensajes.mensaje.get("input_name"))
+		self.apellido = input(Mensajes.mensaje.get("input_lastname"))
+		self.correo = input(Mensajes.mensaje.get("input_mail"))
+		self.clave = input(Mensajes.mensaje.get("input_key"))
+		self.año_nacimiento = input(Mensajes.mensaje.get("birth_date"))
 		pass
 
 	def sing_in(self):
@@ -62,8 +62,8 @@ class Main():
 if __name__ == "__main__":
 	Main().run()
   
-
-  	"""def poblar_txt(self):
+"""
+		def poblar_txt(self):
 		file = open("FicheroInstructor.txt","r")
 		for registro in file:
 			info = registro.split('@@')
