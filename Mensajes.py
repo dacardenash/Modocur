@@ -15,7 +15,6 @@ class Mensajes():
     		Operaciones
 			1. Crear curso
 			2. Modificar curso
-			3. 
 		""",
 		"menu_estudiante" : """
 			Operaciones
