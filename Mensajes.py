@@ -1,7 +1,7 @@
 class Mensajes():
   
 	mensaje = {
-	"menu_inicio" : """
+		"menu_inicio" : """
     		Operaciones
     		1. Registrarse
     		2. Ingresar
@@ -17,5 +17,10 @@ class Mensajes():
     		Operaciones
     	""",
     	"operation" : "Seleccione la operación deseada: ",
+    	"input_name" : "Ingrese nombre",
+    	"input_lastname" : "Ingrese apellido",
+    	"input mail" : "Ingrese correo electronico",
+    	"input_key" : "Ingrese clave",
+    	"input_birth_date" : "Ingrese fecha de nacimiento"
     	"input_error" : "{0} no es una opcion valida",
 	}
