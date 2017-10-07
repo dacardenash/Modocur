@@ -44,10 +44,6 @@ class Main():
 	def display_menu_estudiante():
 		return Mensajes.mensaje.get("menu_estudiante")
 
-	@staticmethod	
-	def display_menu_sing_in():
-		return Mensajes.mensaje.get("menu_sing_in")
-
 	def sing_up(self):
 		"""
 		Crear un nuevo usuario
