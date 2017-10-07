@@ -2,11 +2,13 @@ class Mensajes():
   
 	mensaje = {
 		"menu_inicio" : """
+			----------------------------------------
     		Operaciones
     		1. Registrarse
     		2. Ingresar
     		3. Ingresar datos ficticios desde txt
     		4. Salir
+    		----------------------------------------
     	""",
     	"menu_instructor" : """
     		----------------------------------------
@@ -17,7 +19,7 @@ class Mensajes():
 			3. Comentar
 			5. Agregar modulo
 			6. Promedio de progreso estudiantes
-			7. Cerrar curso   (Cierra el curso y calcula el promedio general de todos los estudiantes)
+			7. Cerrar curso
 			8. Mayor promedio de curso
 			9. Lista de estudiantes por curso
 			----------------------------------------
