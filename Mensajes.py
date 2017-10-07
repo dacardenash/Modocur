@@ -2,8 +2,7 @@ class Mensajes():
   
 	mensaje = {
 		"menu_inicio" : """
-
-    		Operaciones
+			Operaciones
     		1. Registrarse
     		2. Ingresar
     		3. Ingresar datos ficticios desde txt
