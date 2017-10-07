@@ -1,12 +1,15 @@
 
 class Usuario:
 
+	lista_usuarios = []
+
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._nombre = nombre
 		self._apellido = apellido
 		self._correo = correo
 		self._clave = clave
 		self._fecha_nacimiento = fecha_nacimiento
+		Usuario.lista_usuarios.append(self)
 
 	def get_nombre(self):
 		return self._nombre
