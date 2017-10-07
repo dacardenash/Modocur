@@ -42,19 +42,6 @@ class Usuario:
 		self._fecha_nacimiento = fecha_de_nacimiento
     
 """
-    def guardar_instructor(self, lista, list_usuario):
-		lista.append(self)
-		list_usuario.append(self)
-
-	def guardar_estudiante(self, lista, list_usuario):
-		lista.append(self)
-		list_usuario.append(self)
-
-	@staticmethod
-	def poblar_instructor(info, lista):
-		lista.append(info)
-
-
 	@staticmethod
 	def mostrar_usuarios(lista = None):
 		respuesta = ""

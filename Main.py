@@ -33,6 +33,10 @@ class Main():
 		return Mensajes.mensaje.get("menu_estudiante")
 
 	def sing_up(self):
+		"""
+		Crear un nuevo usuario
+		"""
+
 		nombre = input(Mensajes.mensaje.get("input_name"))
 		apellido = input(Mensajes.mensaje.get("input_lastname"))
 		correo = input(Mensajes.mensaje.get("input_mail"))
@@ -41,9 +45,15 @@ class Main():
 		role = int(input(Mensajes.mensaje.get("input_role")))
 		if role == 1:
 			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento)
+			Main.lista_estudiante.append(usuario)
+			Main.lista_usuarios.append(usuario)
+			print(Mensajes.mensaje.get("usuario_created"))
 		elif role == 2:
 			carrera = input(Mensajes.mensaje.get("input_carer"))
 			usuario = Instructor(nombre, apellido, correo, clave, fecha_nacimiento, carrera)
+			Main.lista_instructor.append(usuario)
+			Main.lista_usuarios.append(usuario)
+			print(Mensajes.mensaje.get("usuario_created"))
 		else:
 			print(Mensajes.mensaje.get("input_error").format(role))
 			
