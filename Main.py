@@ -20,15 +20,19 @@ class Main():
 		}
 		self.break_while = True
 
-	def display_usuarios(self):
+	@staticmethod	
+	def display_usuarios():
 		for usuario in Main.lista_usuarios:
 			print(usuario.to_string())
+			
 
-	def display_instructores(self):
+	@staticmethod
+	def display_instructores():
 		for instructor in Main.lista_instructor:
 			print(instructor.to_string())
 
-	def display_estudiantes(self):
+	@staticmethod		
+	def display_estudiantes():
 		for estudiante in Main.lista_estudiante:
 			print(estudiante.to_string())
 
@@ -68,7 +72,6 @@ class Main():
 		else:
 			print(Mensajes.mensaje.get("input_error").format(role))
 			
-	
 	def sing_in(self):
 		"""
 		Ingresar a la plataforma
@@ -77,13 +80,25 @@ class Main():
 		clave = input(Mensajes.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
 
-
 	def read_txt(self):
 		pass
 
 	def salir(self):
-		sys.exit(0)	
-    
+		sys.exit(0)
+
+	def ingresar_datos_ficticios(self):
+		"""Instructor1"""
+		instructor1 = Instructor("Juan", "Perez", "Juanpe@instructor.com", "1234", "05-20-1998", "economía")
+		Main.lista_instructor.append(instructor1)
+		Main.lista_usuarios.append(instructor1)
+
+		"""Estuduante1"""
+		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "2345", "04-07-2005")
+		Main.lista_usuarios.append(estudiante1)
+		Main.lista_estudiante.append(estudiante1)
+		"""Mostrar todos los usuarios registrados (para realizar ensayos)"""
+		print(Main.display_usuarios()) # Está imprimiendo un none que no tengo ni idea de donde sale
+ 
 	def run(self):
 		while self.break_while:
 			print(Main.display_menu_inicio())

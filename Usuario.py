@@ -38,7 +38,7 @@ class Usuario:
 	def set_fecha_nacimiento(self, fecha_de_nacimiento):
 		self._fecha_nacimiento = fecha_de_nacimiento
 
-	def to_string(self) :
+	def to_string(self):
 		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
 			    + ", correo= " + self.get_correo() + ", fecha_nacimiento= " + self.get_fecha_nacimiento()
 			    + '}')
