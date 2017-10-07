@@ -5,10 +5,10 @@ from Estudiante import Estudiante
 from Usuario import Usuario
 
 class Main():
+
 	lista_instructor = []
 	lista_estudiante = []
 	lista_comentario = []
-
 	lista_usuarios = []
 
 	def __init__(self):
