@@ -37,7 +37,7 @@ class Main():
 		self.apellido = input(Mensajes.mensaje.get("input_lastname"))
 		self.correo = input(Mensajes.mensaje.get("input_mail"))
 		self.clave = input(Mensajes.mensaje.get("input_key"))
-		self.año_nacimiento = input(Mensajes.mensaje.get("birth_date"))
+		self.año_nacimiento = input(Mensajes.mensaje.get("input_birth_date"))
 		pass
 
 	def sing_in(self):
