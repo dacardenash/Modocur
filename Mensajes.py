@@ -8,6 +8,7 @@ class Mensajes():
     		2. Ingresar
     		3. Ingresar datos ficticios desde txt
     		4. Salir
+    		5. Ingresar datos ficticios
     	""",
     	"input_role" : """Seleccione una opción: 
     	1. Estudiante

@@ -8,7 +8,6 @@ class Main():
 
 	lista_instructor = []
 	lista_estudiante = []
-	lista_comentario = []
 	lista_usuarios = []
 
 	def __init__(self):
@@ -16,9 +15,22 @@ class Main():
 		"1": self.sing_up,
 		"2": self.sing_in,
 		"3": self.read_txt,
-		"4": self.salir
+		"4": self.salir,
+		"0": self.ingresar_datos_ficticios
 		}
 		self.break_while = True
+
+	def display_usuarios(self):
+		for usuario in Main.lista_usuarios:
+			print(usuario.to_string())
+
+	def display_instructores(self):
+		for instructor in Main.lista_instructor:
+			print(instructor.to_string())
+
+	def display_estudiantes(self):
+		for estudiante in Main.lista_estudiante:
+			print(estudiante.to_string())
 
 	@staticmethod	
 	def display_menu_inicio():
@@ -32,11 +44,14 @@ class Main():
 	def display_menu_estudiante():
 		return Mensajes.mensaje.get("menu_estudiante")
 
+	@staticmethod	
+	def display_menu_sing_in():
+		return Mensajes.mensaje.get("menu_sing_in")
+
 	def sing_up(self):
 		"""
 		Crear un nuevo usuario
 		"""
-
 		nombre = input(Mensajes.mensaje.get("input_name"))
 		apellido = input(Mensajes.mensaje.get("input_lastname"))
 		correo = input(Mensajes.mensaje.get("input_mail"))
@@ -59,7 +74,13 @@ class Main():
 			
 	
 	def sing_in(self):
-		pass
+		"""
+		Ingresar a la plataforma
+		"""
+		correo = input(Mensajes.mensaje.get("input_mail"))
+		clave = input(Mensajes.mensaje.get("input_key"))
+		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
+
 
 	def read_txt(self):
 		pass

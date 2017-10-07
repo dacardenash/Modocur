@@ -1,15 +1,12 @@
 
 class Usuario:
 
-	lista_usuarios = []
-
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._nombre = nombre
 		self._apellido = apellido
 		self._correo = correo
 		self._clave = clave
 		self._fecha_nacimiento = fecha_nacimiento
-		Usuario.lista_usuarios.append(self)
 
 	def get_nombre(self):
 		return self._nombre
@@ -40,15 +37,19 @@ class Usuario:
 
 	def set_fecha_nacimiento(self, fecha_de_nacimiento):
 		self._fecha_nacimiento = fecha_de_nacimiento
+
+	def to_string(self) :
+		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
+			    + ", correo= " + self.get_correo() + ", fecha_nacimiento= " + self.get_fecha_nacimiento()
+			    + '}')
+
+	@staticmethod
+	def buscar_por_correo(usuarios, correo):
+		for usuario in usuarios :
+			if(usuario.get_correo() == correo):
+				return usuario
     
 """
-	@staticmethod
-	def mostrar_usuarios(lista = None):
-		respuesta = ""
-		for reg in lista:
-			respuesta = respuesta + "id: " + reg.getIdentificador() + ","  
-		return respuesta
-
 	@staticmethod
 	def loguear(correo, clave, lista_instruc, lista_estudiante):
 		resp = 0
