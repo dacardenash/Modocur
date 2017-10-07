@@ -2,9 +2,6 @@ class Mensajes():
   
 	mensaje = {
 		"menu_inicio" : """
-			|---------------------------------------------------------------------------------------|
-			|------------------------------ Bienvenido a Modocur -----------------------------------|
-			|---------------------------------------------------------------------------------------|
     		Operaciones
     		1. Registrarse
     		2. Ingresar
@@ -13,13 +10,17 @@ class Mensajes():
     	""",
     	"menu_instructor" : """
     		Operaciones
-			1. Crear curso
-			2. Modificar curso
-			3. 
-		""",
-		"menu_estudiante" : """
-			Operaciones
-		""",
+    		1. Crear curso
+    		2. Modificar curso
+    	""",
+    	"menu_estudiante" : """
+    		Operaciones
+    	""",
     	"operation" : "Seleccione la operación deseada: ",
+    	"input_name" : "Ingrese nombre",
+    	"input_lastname" : "Ingrese apellido",
+    	"input mail" : "Ingrese correo electronico",
+    	"input_key" : "Ingrese clave",
+    	"input_birth_date" : "Ingrese fecha de nacimiento"
     	"input_error" : "{0} no es una opcion valida",
 	}

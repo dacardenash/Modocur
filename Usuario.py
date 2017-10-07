@@ -1,52 +1,44 @@
-class Usuario():
 
-	def __init__(self, identificador, nombre, apellido, correo, clave, fecha_nacimiento):
-		self._identificador = identificador
+class Usuario:
+
+	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._nombre = nombre
 		self._apellido = apellido
 		self._correo = correo
 		self._clave = clave
 		self._fecha_nacimiento = fecha_nacimiento
-		#self._comentarios = comentarios                   #Aqui falta integrarlo con la clase comentarios
 
-
-	def getIdentificador(self):
-		return self._identificador
-
-	def setIdentificador(self, identificador):
-		self._identificador = identificador
-
-	def getNombre(self):
+	def get_nombre(self):
 		return self._nombre
 
-	def setNombre(self, nombre):
+	def set_nombre(self, nombre):
 		self._nombre = nombre
 
-	def getApellido(self):
+	def get_apellido(self):
 		return self._apellido
 
-	def setApellido(self, apellido):
+	def set_apellido(self, apellido):
 		self._apellido = apellido
 
-	def getCorreo(self):
+	def get_correo(self):
 		return self._correo
 
-	def setCorreo(self, correo):
+	def set_correo(self, correo):
 		self._correo = correo
 
-	def getClave(self):
+	def get_clave(self):
 		return self._clave
 
-	def setClave(self, clave):
+	def set_clave(self, clave):
 		self._clave = clave
 
-	def getFechaNacimiento(self):
+	def get_fecha_nacimiento(self):
 		return self._fecha_nacimiento
 
-	def setFechaNacimiento(self, fechaNacienminto):
-		self._fecha_nacimiento = fechaNacienminto
-
-	def guardar_instructor(self, lista, list_usuario):
+	def set_fecha_nacimiento(self, fecha_de_nacimiento):
+		self._fecha_nacimiento = fecha_de_nacimiento
+    
+    """def guardar_instructor(self, lista, list_usuario):
 		lista.append(self)
 		list_usuario.append(self)
 
@@ -77,6 +69,4 @@ class Usuario():
 		for reg in lista_estudiante:
 			if(reg.getCorreo() == correo and reg.getClave() == clave):
 				resp = 2
-		return resp
-
-
+		return resp"""

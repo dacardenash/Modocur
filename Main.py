@@ -9,6 +9,8 @@ class Main():
 	lista_estudiante = []
 	lista_comentario = []
 
+	lista_usuarios = []
+
 	def __init__(self):
 		self.choices = {
 		"1": self.sing_up,
@@ -18,16 +20,24 @@ class Main():
 		}
 		self.break_while = True
 
-	def display_menu_inicio(self):
+	@staticmethod	
+	def display_menu_inicio():
 		return Mensajes.mensaje.get("menu_inicio")
 
-	def display_menu_instructor(self):
+	@staticmethod
+	def display_menu_instructor():
 		return Mensajes.mensaje.get("menu_instructor")
 
-	def display_menu_estudiante(self):
+	@staticmethod
+	def display_menu_estudiante():
 		return Mensajes.mensaje.get("menu_estudiante")
 
 	def sing_up(self):
+		nombre = input(Mensajes.mensaje.get("input_name"))
+		apellido = input(Mensajes.mensaje.get("input_lastname"))
+		correo = input(Mensajes.mensaje.get("input_mail"))
+		clave = input(Mensajes.mensaje.get("input_key"))
+		año_de_nacimiento = input(Mensajes.mensaje.get("birth_date"))
 		pass
 
 	def sing_in(self):
@@ -41,7 +51,7 @@ class Main():
     
 	def run(self):
 		while self.break_while:
-			print(self.display_menu_inicio())
+			print(Main.display_menu_inicio())
 			option = input(Mensajes.mensaje.get("operation"))
 			action = self.choices.get(option)
 			if action:
