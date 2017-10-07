@@ -7,7 +7,6 @@ class Estudiante(Usuario):
 		super().__init__(nombre, apellido, correo, clave, fecha_nacimiento)
 		self._comentarios = []
 
-
 	#@override
 	def to_string(self) :
 		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
