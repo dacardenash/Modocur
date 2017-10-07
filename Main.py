@@ -25,7 +25,6 @@ class Main():
 		for usuario in Main.lista_usuarios:
 			print(usuario.to_string())
 
-
 	@staticmethod
 	def display_instructores():
 		for instructor in Main.lista_instructor:
@@ -38,15 +37,15 @@ class Main():
 
 	@staticmethod	
 	def display_menu_inicio():
-		return Mensajes.mensaje.get("menu_inicio")
+		print(Mensajes.mensaje.get("menu_inicio"))
 
 	@staticmethod
 	def display_menu_instructor():
-		return Mensajes.mensaje.get("menu_instructor")
+		print(Mensajes.mensaje.get("menu_instructor"))
 
 	@staticmethod
 	def display_menu_estudiante():
-		return Mensajes.mensaje.get("menu_estudiante")
+		print (Mensajes.mensaje.get("menu_estudiante"))
 
 	def sing_up(self):
 		"""
@@ -87,21 +86,22 @@ class Main():
 		sys.exit(0)
 
 	def ingresar_datos_ficticios(self):
-		"""Instructor1"""
+		"""Crear Instructor1"""
 		instructor1 = Instructor("Juan", "Perez", "Juanpe@instructor.com", "1234", "05-20-1998", "economía")
 		Main.lista_instructor.append(instructor1)
 		Main.lista_usuarios.append(instructor1)
 
-		"""Estuduante1"""
+		"""Crear Estudiante1"""
 		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "2345", "04-07-2005")
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
-		"""Mostrar todos los usuarios registrados (para realizar ensayos)"""
+
+		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
 		Main.display_usuarios()
-		
+
 	def run(self):
 		while self.break_while:
-			print(Main.display_menu_inicio())
+			Main.display_menu_inicio()
 			option = input(Mensajes.mensaje.get("operation"))
 			action = self.choices_menu_principal.get(option)
 			if action:
