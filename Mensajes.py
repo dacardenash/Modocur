@@ -13,7 +13,6 @@ class Mensajes():
     	1. Estudiante
     	2. Instructor
     	""",
-    	"input_carer" : "Selecione carrera: ",
     	"menu_instructor" : """
     		Operaciones
 			1. Crear curso
@@ -44,5 +43,7 @@ class Mensajes():
     	"input_mail" : "Ingrese correo electronico: ",
     	"input_key" : "Ingrese clave: ",
     	"input_birth_date" : "Ingrese fecha de nacimiento: ",
+    	"input_carer" : "Selecione carrera: ",
+    	"usuario_created" : "Registro exitoso",
     	"input_error" : "{0} no es una opcion valida"
 	}
