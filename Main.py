@@ -16,7 +16,7 @@ class Main():
 		"2": self.sing_in,
 		"3": self.read_txt,
 		"4": self.salir,
-		"0": self.ingresar_datos_ficticios
+		"5": self.ingresar_datos_ficticios
 		}
 		self.break_while = True
 
@@ -24,7 +24,7 @@ class Main():
 	def display_usuarios():
 		for usuario in Main.lista_usuarios:
 			print(usuario.to_string())
-			
+
 
 	@staticmethod
 	def display_instructores():
@@ -97,8 +97,8 @@ class Main():
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 		"""Mostrar todos los usuarios registrados (para realizar ensayos)"""
-		print(Main.display_usuarios()) # Está imprimiendo un none que no tengo ni idea de donde sale
- 
+		Main.display_usuarios()
+		
 	def run(self):
 		while self.break_while:
 			print(Main.display_menu_inicio())
