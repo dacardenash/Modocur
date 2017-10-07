@@ -12,7 +12,7 @@ class Main():
 	lista_usuarios = []
 
 	def __init__(self):
-		self.choices = {
+		self.choices_menu_principal = {
 		"1": self.sing_up,
 		"2": self.sing_in,
 		"3": self.read_txt,
@@ -33,13 +33,21 @@ class Main():
 		return Mensajes.mensaje.get("menu_estudiante")
 
 	def sing_up(self):
-		self.nombre = input(Mensajes.mensaje.get("input_name"))
-		self.apellido = input(Mensajes.mensaje.get("input_lastname"))
-		self.correo = input(Mensajes.mensaje.get("input_mail"))
-		self.clave = input(Mensajes.mensaje.get("input_key"))
-		self.año_nacimiento = input(Mensajes.mensaje.get("input_birth_date"))
-		pass
-
+		nombre = input(Mensajes.mensaje.get("input_name"))
+		apellido = input(Mensajes.mensaje.get("input_lastname"))
+		correo = input(Mensajes.mensaje.get("input_mail"))
+		clave = input(Mensajes.mensaje.get("input_key"))
+		fecha_nacimiento = input(Mensajes.mensaje.get("input_birth_date"))
+		role = int(input(Mensajes.mensaje.get("input_role")))
+		if role == 1:
+			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento)
+		elif role == 2:
+			carrera = input(Mensajes.mensaje.get("input_carer"))
+			usuario = Instructor(nombre, apellido, correo, clave, fecha_nacimiento, carrera)
+		else:
+			print(Mensajes.mensaje.get("input_error").format(role))
+			
+	
 	def sing_in(self):
 		pass
 
@@ -53,7 +61,7 @@ class Main():
 		while self.break_while:
 			print(Main.display_menu_inicio())
 			option = input(Mensajes.mensaje.get("operation"))
-			action = self.choices.get(option)
+			action = self.choices_menu_principal.get(option)
 			if action:
 				action()
 			else:

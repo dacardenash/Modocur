@@ -2,12 +2,18 @@ class Mensajes():
   
 	mensaje = {
 		"menu_inicio" : """
+			Menú de Inicio
     		Operaciones
     		1. Registrarse
     		2. Ingresar
     		3. Ingresar datos ficticios desde txt
     		4. Salir
     	""",
+    	"input_role" : """Seleccione una opción: 
+    	1. Estudiante
+    	2. Instructor
+    	""",
+    	"input_carer" : "Selecione carrera: ",
     	"menu_instructor" : """
     		Operaciones
 			1. Crear curso
@@ -33,10 +39,10 @@ class Mensajes():
 			5. Ver Progreso cursos realizados
     	""",
     	"operation" : "Seleccione la operación deseada: ",
-    	"input_name" : "Ingrese nombre",
-    	"input_lastname" : "Ingrese apellido",
-    	"input mail" : "Ingrese correo electronico",
-    	"input_key" : "Ingrese clave",
-    	"input_birth_date" : "Ingrese fecha de nacimiento",
+    	"input_name" : "Ingrese nombre: ",
+    	"input_lastname" : "Ingrese apellido: ",
+    	"input_mail" : "Ingrese correo electronico: ",
+    	"input_key" : "Ingrese clave: ",
+    	"input_birth_date" : "Ingrese fecha de nacimiento: ",
     	"input_error" : "{0} no es una opcion valida"
 	}
