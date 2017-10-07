@@ -9,7 +9,7 @@ class Mensajes():
     		4. Salir
     	""",
     	"menu_instructor" : """
-    		Operaciones
+			Operaciones
 			1. Crear curso
 			2. Modificar curso
 		""",
