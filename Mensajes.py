@@ -9,12 +9,28 @@ class Mensajes():
     		4. Salir
     	""",
     	"menu_instructor" : """
-    		Operaciones
-    		1. Crear curso
-    		2. Modificar curso
+    		----------------------------------------
+			OPERACIONES
+			1. Crear curso
+			2. Modificar curso
+			4. Consultar cursos creados
+			3. Comentar
+			5. Agregar modulo
+			6. Promedio de progreso estudiantes
+			7. Cerrar curso   (Cierra el curso y calcula el promedio general de todos los estudiantes)
+			8. Mayor promedio de curso
+			9. Lista de estudiantes por curso
+			----------------------------------------
     	""",
     	"menu_estudiante" : """
-    		Operaciones
+    		----------------------------------------
+			OPERACIONES
+			1. Ver curso disponibles
+			2. Inscribirse
+			3. Ver modulo
+			4. Comentar
+			5. Ver Progreso cursos realizados
+			----------------------------------------
     	""",
     	"operation" : "Seleccione la operación deseada: ",
     	"input_name" : "Ingrese nombre",
