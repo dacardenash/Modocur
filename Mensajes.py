@@ -1,7 +1,7 @@
 class Mensajes():
 
 	mensaje = {
-		"menu" : """
+		"menu_inicio" : """
 			|---------------------------------------------------------------------------------------|
 			|------------------------------ Bienvenido a Modocur -----------------------------------|
 			|---------------------------------------------------------------------------------------|
@@ -11,5 +11,15 @@ class Mensajes():
     		3. Ingresar datos ficticios desde txt
     		4. Salir
     	""",
-    	"operation" : "Seleccione la operación deseada: "
+    	"menu_instructor" : """
+    		Operaciones
+			1. Crear curso
+			2. Modificar curso
+			3. 
+			""",
+		"menu_estudiante" : """
+			Operaciones
+		""",
+    	"operation" : "Seleccione la operación deseada: ",
+    	"input_error" : "{0} no es una opcion valida",
 	}
