@@ -13,9 +13,9 @@ class Mensajes():
     		1. Crear curso
     		2. Modificar curso
     	""",
-		"menu_estudiante" : """
-			Operaciones
-		""",
+    	"menu_estudiante" : """
+    		Operaciones
+    	""",
     	"operation" : "Seleccione la operación deseada: ",
     	"input_error" : "{0} no es una opcion valida",
 	}
