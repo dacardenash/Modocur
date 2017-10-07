@@ -1,7 +1,7 @@
 class Mensajes():
   
 	mensaje = {
-		"menu_inicio" : """
+	"menu_inicio" : """
     		Operaciones
     		1. Registrarse
     		2. Ingresar
