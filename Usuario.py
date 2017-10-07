@@ -1,6 +1,4 @@
-class Usuario:
-
-	list_usuarios= []
+class Usuario():
 
 	def __init__(self, identificador, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._identificador = identificador
@@ -15,18 +13,70 @@ class Usuario:
 	def getIdentificador(self):
 		return self._identificador
 
-	def guardar(self):
-		list_usuarios.append(self)
+	def setIdentificador(self, identificador):
+		self._identificador = identificador
+
+	def getNombre(self):
+		return self._nombre
+
+	def setNombre(self, nombre):
+		self._nombre = nombre
+
+	def getApellido(self):
+		return self._apellido
+
+	def setApellido(self, apellido):
+		self._apellido = apellido
+
+	def getCorreo(self):
+		return self._correo
+
+	def setCorreo(self, correo):
+		self._correo = correo
+
+	def getClave(self):
+		return self._clave
+
+	def setClave(self, clave):
+		self._clave = clave
+
+	def getFechaNacimiento(self):
+		return self._fecha_nacimiento
+
+	def setFechaNacimiento(self, fechaNacienminto):
+		self._fecha_nacimiento = fechaNacienminto
+
+	def guardar_instructor(self, lista, list_usuario):
+		lista.append(self)
+		list_usuario.append(self)
+
+	def guardar_estudiante(self, lista, list_usuario):
+		lista.append(self)
+		list_usuario.append(self)
 
 	@staticmethod
-	def poblar_usuario(info):
-		Usuario.list_usuarios.append(info)
+	def poblar_instructor(info, lista):
+		lista.append(info)
+
 
 	@staticmethod
-	def mostrar_usuarios():
+	def mostrar_usuarios(lista = None):
 		respuesta = ""
-		for reg in Usuario.list_usuarios:
-			respuesta = respuesta + "id: " + reg.getIdentificador() + "," 
+		for reg in lista:
+			respuesta = respuesta + "id: " + reg.getIdentificador() + ","  
 		return respuesta
+
+	@staticmethod
+	def loguear(correo, clave, lista_instruc, lista_estudiante):
+		resp = 0
+		for reg in lista_instruc:
+			#print(reg.getCorreo() + " " + correo + " " + reg.getClave() + " " + clave)
+			if(reg.getCorreo() == correo and reg.getClave() == clave):
+				resp = 1
+
+		for reg in lista_estudiante:
+			if(reg.getCorreo() == correo and reg.getClave() == clave):
+				resp = 2
+		return resp
 
 
