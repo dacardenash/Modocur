@@ -37,6 +37,6 @@ class Mensajes():
     	"input_lastname" : "Ingrese apellido",
     	"input mail" : "Ingrese correo electronico",
     	"input_key" : "Ingrese clave",
-    	"input_birth_date" : "Ingrese fecha de nacimiento"
-    	"input_error" : "{0} no es una opcion valida",
+    	"input_birth_date" : "Ingrese fecha de nacimiento",
+    	"input_error" : "{0} no es una opcion valida"
 	}
