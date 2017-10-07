@@ -1,0 +1,5 @@
+000111@@Daniel@@Perez Gutierrez@@daperez@hotmail.com@@0987@@08/10/1985@@Esto esta malo@@Ing. de petroleos
+000112@@Maria@@Ossa@@maossa@gmail.com@@1234@@24/01/1970@@correcto, es por ese lado@@Agronomia
+000113@@Santiago@@Durango@@sarango_75@gmail.com@@sa4509@@30/02/1991@@Te falta agregar la coma@@ Ing. de control
+000114@@Laura@@Valencia@@valenla@unal.edu.co@@jk902324@@06/11/1992@@muuuy bien@@ Historia
+000115@@Ramiro@@Peña@@ramipena@gmail.com@@qw340@@15/09/1968@@esa no es justificacion@@ Matemáticas
