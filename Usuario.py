@@ -39,26 +39,21 @@ class Usuario:
 		self._fecha_nacimiento = fecha_de_nacimiento
 
 	def to_string(self):
-		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
+		return("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
 			    + ", correo= " + self.get_correo() + ", fecha_nacimiento= " + self.get_fecha_nacimiento()
 			    + '}')
+
+	def login(self, clave):
+		if(self.get_clave() == clave):
+			return True
+		else:
+			False
 
 	@staticmethod
 	def buscar_por_correo(usuarios, correo):
 		for usuario in usuarios :
 			if(usuario.get_correo() == correo):
 				return usuario
-    
-"""
-	@staticmethod
-	def loguear(correo, clave, lista_instruc, lista_estudiante):
-		resp = 0
-		for reg in lista_instruc:
-			#print(reg.getCorreo() + " " + correo + " " + reg.getClave() + " " + clave)
-			if(reg.getCorreo() == correo and reg.getClave() == clave):
-				resp = 1
 
-		for reg in lista_estudiante:
-			if(reg.getCorreo() == correo and reg.getClave() == clave):
-				resp = 2
-		return resp"""
+	
+  
