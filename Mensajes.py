@@ -15,6 +15,7 @@ class Mensajes():
     	2. Instructor
     	""",
     	"menu_instructor" : """
+    		Menú Instructor
     		Operaciones
 			1. Crear curso
 			2. Modificar curso
@@ -31,6 +32,7 @@ class Mensajes():
 			14. Cerrar sesion
 		""",
     	"menu_estudiante" : """
+    		Menú Estudiante
     		Operaciones
 			1. Ver curso disponibles
 			2. Inscribirse
@@ -38,6 +40,11 @@ class Mensajes():
 			4. Comentar
 			5. Ver Progreso cursos realizados
     	""",
+    	"menu_administrador" : """
+    		Menú Administrador
+    		Operaciones
+    	""",
+    	"login_error" : "El correo y/o la contraseña no coinciden",
     	"operation" : "Seleccione la operación deseada: ",
     	"input_name" : "Ingrese nombre: ",
     	"input_lastname" : "Ingrese apellido: ",

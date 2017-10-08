@@ -16,6 +16,7 @@ class Instructor(Usuario):
 	#@override
 	def to_string(self) :
 		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
-			    + ", correo= " + self.get_correo() + ", fecha_nacimiento= " + self.get_fecha_nacimiento()
+			    + ", correo= " + self.get_correo() + ",clave= " + self.get_clave()
+			    + ", fecha_nacimiento= " + self.get_fecha_nacimiento()
 			    + ", carrera= " + self.get_carrera() + '}')
 
