@@ -78,6 +78,15 @@ class Main():
 		correo = input(Mensajes.mensaje.get("input_mail"))
 		clave = input(Mensajes.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
+		role = type (usuario)
+		ingresar = usuario.login(clave)
+		if (ingresar and isinstance(usuario, Estudiante)):
+			Main.display_menu_estudiante()
+		elif(ingresar and isinstance(usuario, Instructor)):
+			Main.display_menu_instructor()
+		else:
+			pass
+
 
 	def read_txt(self):
 		pass
