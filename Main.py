@@ -84,6 +84,8 @@ class Main():
 			Main.display_menu_estudiante()
 		elif(ingresar and isinstance(usuario, Instructor)):
 			Main.display_menu_instructor()
+		elif(ingresar and isinstance(usuario, Usuario)):
+			pass
 		else:
 			pass
 
