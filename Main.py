@@ -47,6 +47,10 @@ class Main():
 	def display_menu_estudiante():
 		print (Mensajes.mensaje.get("menu_estudiante"))
 
+	@staticmethod
+	def display_menu_administrador():
+		print (Mensajes.mensaje.get("menu_administrador"))
+
 	def sing_up(self):
 		"""
 		Crear un nuevo usuario
@@ -75,20 +79,21 @@ class Main():
 		"""
 		Ingresar a la plataforma
 		"""
+		ingresar = False
 		correo = input(Mensajes.mensaje.get("input_mail"))
 		clave = input(Mensajes.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
-		role = type (usuario)
-		ingresar = usuario.login(clave)
+		if(usuario): 						#Verifica que el correo existe
+			ingresar = usuario.login(clave) #Ingresar es true si la clave conicide
+
 		if (ingresar and isinstance(usuario, Estudiante)):
 			Main.display_menu_estudiante()
 		elif(ingresar and isinstance(usuario, Instructor)):
 			Main.display_menu_instructor()
 		elif(ingresar and isinstance(usuario, Usuario)):
-			pass
+			Main.menu_administrador()
 		else:
-			pass
-
+			print(Mensajes.mensaje.get("login_error"))
 
 	def read_txt(self):
 		pass
@@ -103,12 +108,21 @@ class Main():
 		Main.lista_usuarios.append(instructor1)
 
 		"""Crear Estudiante1"""
-		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "2345", "04-07-2005")
+		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "1234", "04-07-2005")
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 
 		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
 		Main.display_usuarios()
+
+	def run_estudiante(self):
+		pass
+
+	def run_instructor(self):
+		pass
+
+	def run_administrador(self):
+		pass
 
 	def run(self):
 		while self.break_while:
