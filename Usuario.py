@@ -56,17 +56,4 @@ class Usuario:
 				return usuario
 
 	
-    
-"""
-	@staticmethod
-	def loguear(correo, clave, lista_instruc, lista_estudiante):
-		resp = 0
-		for reg in lista_instruc:
-			#print(reg.getCorreo() + " " + correo + " " + reg.getClave() + " " + clave)
-			if(reg.getCorreo() == correo and reg.getClave() == clave):
-				resp = 1
-
-		for reg in lista_estudiante:
-			if(reg.getCorreo() == correo and reg.getClave() == clave):
-				resp = 2
-		return resp"""
+  
