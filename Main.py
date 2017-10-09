@@ -11,7 +11,7 @@ class Main():
 
 	lista_instructor = []
 	lista_estudiante = []
-	lista_usuarios = [Usuario("Administrador", "Modocur", "Adm@modocur.com", "1234", "01-08-2017")]
+	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
 
 	def __init__(self):
 		self.choices_menu_principal = {
