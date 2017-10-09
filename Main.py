@@ -185,7 +185,7 @@ class Main():
 		"""
 		Crear un nuevo curso
 		"""
-		id = input(Mensaje.mensaje.get("input_id"))
+		id = Curso.cursos_creados + 1
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		categoria = input(Mensaje.mensaje.get("input_category"))
 		descripcion = input(Mensaje.mensaje.get("input_description"))

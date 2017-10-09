@@ -1,6 +1,7 @@
 class Curso:
 
 	lista_curso = []
+	cursos_creados  = 0
 
 	def __init__(self, id, nombre, categoria, descripcion, fecha_creacion, instructor):
 		self._id = id
@@ -14,6 +15,7 @@ class Curso:
 		self._modulos = []
 		self._inscripcion = []
 		Curso.lista_curso.append(self)
+		Curso.cursos_creados += 1
 
 	def get_id(self):
 		return self._id
@@ -63,7 +65,7 @@ class Curso:
 			    + ", fecha_creacion= " + self.get_fecha_creacion() + ", instructor= " 
 			    + self.get_instructor().get_nombre() + " " +  self.get_instructor().get_apellido()
 			    + '}')
-	
+
 
 	"""@staticmethod
     def get_curso(id, lista_curso):
