@@ -8,7 +8,7 @@ from Comentarios import Comentario
 from Inscripciones import Inscripcion
 
 class Main():
-
+	#dfgh
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Administrador", "Modocur", "Adm@modocur.com", "1234", "01-08-2017")]
