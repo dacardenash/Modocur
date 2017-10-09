@@ -11,6 +11,7 @@ class Inscripcion:
 	    self._estudiante = estudiante
 	    self._curso = curso
 
+    @staticmethod
 	def inscribirse(fecha, nota, progreso, num_vistos, estudiante, curso):
 
-		s
+		

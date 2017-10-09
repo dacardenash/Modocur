@@ -9,6 +9,8 @@ from Inscripciones import Inscripcion
 
 class Main():
 
+    lista_curso = []
+    lista_inscripcion = []
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
@@ -22,6 +24,7 @@ class Main():
 		"5": self.ingresar_datos_ficticios
 		}
 		self.choices_menu_estudiante = {
+		"2" : self.inscribirse
 		"4" : self.logout
 		}
 		self.choices_menu_instructor = {
@@ -171,6 +174,12 @@ class Main():
 				action()
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
+
+	def inscribirse(self):
+		Curso.consultar_cursos(lista_curso)
+		vble=input("dijite el codigo del curso que desea inscribir:")
+		vble2=Curso.get_curso(vble, lista_curso)
+		vble3=
 
 if __name__ == "__main__":
 	Main().run()
