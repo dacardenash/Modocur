@@ -9,8 +9,8 @@ from Inscripciones import Inscripcion
 
 class Main():
 
-    #lista_curso = []
-    #lista_inscripcion = []
+	lista_curso = []
+	lista_inscripcion = []
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
@@ -31,7 +31,10 @@ class Main():
 		"14" : self.logout
 		}
 		self.choices_menu_administrador = {
-		"3" : self.logout
+		"1" : Main.display_estudiantes,
+		"2" : Main.display_instructores,
+		"3" : Main.display_cursos,
+		"4" : self.logout
 		}
 		self.break_while = True
 		self.break_while_sing_in = False
@@ -45,11 +48,19 @@ class Main():
 	def display_instructores():
 		for instructor in Main.lista_instructor:
 			print(instructor.to_string())
+			for curso in instructor.get_cursos():
+				print(curso.to_string())
 
 	@staticmethod		
 	def display_estudiantes():
 		for estudiante in Main.lista_estudiante:
 			print(estudiante.to_string())
+
+	@staticmethod		
+	def display_cursos():
+		for curso in Main.lista_curso:
+			print(curso.to_string())
+
 
 	def sing_up(self):
 		"""
@@ -121,14 +132,19 @@ class Main():
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 
+		"""Crear Curso1"""
+		curso1 = Curso("1", "Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
+		Main.lista_curso.append(curso1)
+
 		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
 		Main.display_usuarios()
+		Main.display_cursos()
 
 	def logout(self):
 		usuario = None
-		print(Mensaje.mensaje.get("close_sesion"))
 		self.break_while_sing_in = False
-
+		print(Mensaje.mensaje.get("close_sesion"))
+		
 	def run(self):
 		while self.break_while:
 			print(Mensaje.mensaje.get("menu_inicio"))

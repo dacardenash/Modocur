@@ -42,7 +42,10 @@ class Mensaje():
     	"menu_administrador" : """
     		Menú Administrador
     		Operaciones
-    		3. Cerrar sesión
+    		1. Ver lista de estudiantes
+    		2. Ver lista de Instructores
+    		3. Ver lista de cursos
+    		4. Cerrar sesión
     	""",
     	"login_error" : "El correo y/o la contraseña no coinciden",
     	"operation" : "Seleccione la operación deseada: ",
