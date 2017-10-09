@@ -28,6 +28,7 @@ class Main():
 		"4" : self.logout
 		}
 		self.choices_menu_instructor = {
+		"1" : self.new_course,
 		"14" : self.logout
 		}
 		self.choices_menu_administrador = {
@@ -41,8 +42,10 @@ class Main():
 
 	@staticmethod	
 	def display_usuarios():
+		registros = ""
 		for usuario in Main.lista_usuarios:
-			print(usuario.to_string())
+			registros +=  usuario.to_string() + "\n"
+		return registros
 
 	@staticmethod
 	def display_instructores():
@@ -107,9 +110,9 @@ class Main():
 			self.break_while_sing_in = True
 
 		if (ingresar and isinstance(usuario, Estudiante)):
-			self.run_estudiante()
+			self.run_estudiante(usuario)
 		elif(ingresar and isinstance(usuario, Instructor)):
-			self.run_instructor()
+			self.run_instructor(usuario)
 		elif(ingresar and isinstance(usuario, Usuario)):
 			self.run_administrador()
 		else:
@@ -132,15 +135,18 @@ class Main():
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 
-		"""Crear Curso1"""
+		"""Crear Cursos"""
 		curso1 = Curso("1", "Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso1)
 
+		curso2 = Curso("2", "Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
+		Main.lista_curso.append(curso2)
+
 		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
-		Main.display_usuarios()
+		print(Main.display_usuarios())
 		Main.display_cursos()
 
-	def logout(self):
+	def logout(self, usuario = lista_usuarios[0]):
 		usuario = None
 		self.break_while_sing_in = False
 		print(Mensaje.mensaje.get("close_sesion"))
@@ -155,23 +161,23 @@ class Main():
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
 
-	def run_estudiante(self):
+	def run_estudiante(self, estudiante):
 		while self.break_while_sing_in:
 			print (Mensaje.mensaje.get("menu_estudiante"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_estudiante.get(option)
 			if action:
-				action()
+				action(estudiante)
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
 
-	def run_instructor(self):
+	def run_instructor(self, instructor):
 		while self.break_while_sing_in:
 			print(Mensaje.mensaje.get("menu_instructor"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_instructor.get(option)
 			if action:
-				action()
+				action(instructor)
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
 
@@ -184,6 +190,17 @@ class Main():
 				action()
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
+
+	def new_course(self,instructor):
+		id = input(Mensaje.mensaje.get("input_id"))
+		nombre = input(Mensaje.mensaje.get("input_name"))
+		categoria = input(Mensaje.mensaje.get("input_category"))
+		descripcion = input(Mensaje.mensaje.get("input_description"))
+		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
+		curso = Curso(id, nombre, categoria, descripcion, fecha_creacion, instructor)
+		print(Mensaje.mensaje.get("course_created"))
+		Main.lista_curso.append(curso)
+		Main.display_cursos()
 
 if __name__ == "__main__":
 	Main().run()
