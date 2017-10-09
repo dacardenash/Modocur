@@ -1,2 +1,2 @@
-class Cursos:
+class Curso:
 	pass

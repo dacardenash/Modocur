@@ -1,2 +1,2 @@
-class Inscripciones:
+class Inscripcion:
 	pass
