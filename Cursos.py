@@ -1,17 +1,18 @@
 class Curso:
 
-	def __init__(self, id, instructor, mensaje, nombre, categoria, estado, fecha_creacion,
-				 fecha_finalizacion):
+	lista_curso = []
+
+	def __init__(self, id, nombre, categoria, descripcion, fecha_creacion, instructor):
 		self._id = id
-		self._instructor = instructor
-		self._mensaje = mensaje 
 		self._nombre = nombre
 		self._categoria = categoria
-		self._estado = estado
+		self._descripcion = descripcion 
 		self._fecha_creacion = fecha_creacion
-		self._fecha_finalizacion = fecha_finalizacion
-		self._modulos = modulos
+		self._estado = True
+		self._instructor = instructor
+		self._modulos = []
 		self._inscripcion = []
+		Curso.lista_curso.append(self)
 
 	def get_id(self):
 		return self._id
