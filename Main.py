@@ -8,7 +8,7 @@ class Main():
 
 	lista_instructor = []
 	lista_estudiante = []
-	lista_usuarios = []
+	lista_usuarios = [Usuario("Administrador", "Modocur", "Adm@modocur.com", "1234", "01-08-2017")]
 
 	def __init__(self):
 		self.choices_menu_principal = {
@@ -17,6 +17,15 @@ class Main():
 		"3": self.read_txt,
 		"4": self.salir,
 		"5": self.ingresar_datos_ficticios
+		}
+		self.choices_menu_estudiante = {
+		"4" : self.logout
+		}
+		self.choices_menu_instructor = {
+		"14" : self.logout
+		}
+		self.choices_menu_administrador = {
+		"3" : self.logout
 		}
 		self.break_while = True
 
@@ -83,15 +92,15 @@ class Main():
 		correo = input(Mensajes.mensaje.get("input_mail"))
 		clave = input(Mensajes.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
-		if(usuario): 						#Verifica que el correo existe
-			ingresar = usuario.login(clave) #Ingresar es true si la clave conicide
+		if(usuario):								#Verifica que el correo existe
+			ingresar = usuario.login(clave) 		#Ingresar es true si la clave conicide
 
 		if (ingresar and isinstance(usuario, Estudiante)):
-			Main.display_menu_estudiante()
+			self.run_estudiante()
 		elif(ingresar and isinstance(usuario, Instructor)):
-			Main.display_menu_instructor()
+			self.run_instructor()
 		elif(ingresar and isinstance(usuario, Usuario)):
-			Main.menu_administrador()
+			self.run_administrador()
 		else:
 			print(Mensajes.mensaje.get("login_error"))
 
@@ -115,20 +124,46 @@ class Main():
 		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
 		Main.display_usuarios()
 
-	def run_estudiante(self):
-		pass
-
-	def run_instructor(self):
-		pass
-
-	def run_administrador(self):
-		pass
+	def logout(self):
+		usuario = None
+		print(Mensajes.mensaje.get("close_sesion"))
+		self.run()
 
 	def run(self):
 		while self.break_while:
 			Main.display_menu_inicio()
 			option = input(Mensajes.mensaje.get("operation"))
 			action = self.choices_menu_principal.get(option)
+			if action:
+				action()
+			else:
+				print(Mensajes.mensaje.get("input_error").format(option))
+
+	def run_estudiante(self):
+		while self.break_while:
+			Main.display_menu_estudiante()
+			option = input(Mensajes.mensaje.get("operation"))
+			action = self.choices_menu_estudiante.get(option)
+			if action:
+				action()
+			else:
+				print(Mensajes.mensaje.get("input_error").format(option))
+
+	def run_instructor(self):
+		while self.break_while:
+			Main.display_menu_instructor()
+			option = input(Mensajes.mensaje.get("operation"))
+			action = self.choices_menu_instructor.get(option)
+			if action:
+				action()
+			else:
+				print(Mensajes.mensaje.get("input_error").format(option))
+
+	def run_administrador(self):
+		while self.break_while:
+			Main.display_menu_administrador()
+			option = input(Mensajes.mensaje.get("operation"))
+			action = self.choices_menu_administrador.get(option)
 			if action:
 				action()
 			else:

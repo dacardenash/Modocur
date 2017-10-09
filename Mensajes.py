@@ -23,7 +23,7 @@ class Mensajes():
 			3. Comentar
 			5. Agregar modulo
 			7. ⌂--Promedio de progreso estudiantes
-			8. ⌂--Cerrar curso   (Cierra el curso y calcula la nota final de cada estudiante)
+			8. ⌂--Cerrar curso (Cierra el curso y calcula la nota final de cada estudiante)
 			9. ⌂--Mayor promedio de curso
 			10. ⌂-- Consultar curso con mayor N° estudiantes
 			11. ⌂-- Generar reporte fecha | curso | n° estudiantes | promedio
@@ -34,15 +34,15 @@ class Mensajes():
     	"menu_estudiante" : """
     		Menú Estudiante
     		Operaciones
-			1. Ver curso disponibles
+			1. Ver cursos disponibles
 			2. Inscribirse
-			3. Ver modulo
-			4. Comentar
-			5. Ver Progreso cursos realizados
+			3. Ver cursos inscritos
+			4. Cerrar sesión
     	""",
     	"menu_administrador" : """
     		Menú Administrador
     		Operaciones
+    		3. Cerrar sesión
     	""",
     	"login_error" : "El correo y/o la contraseña no coinciden",
     	"operation" : "Seleccione la operación deseada: ",
@@ -53,5 +53,6 @@ class Mensajes():
     	"input_birth_date" : "Ingrese fecha de nacimiento: ",
     	"input_carer" : "Selecione carrera: ",
     	"usuario_created" : "Registro exitoso",
+    	"close_sesion" : "Su sesión se ha cerrado correctamente",
     	"input_error" : "{0} no es una opcion valida"
 	}
