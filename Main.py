@@ -1,4 +1,4 @@
-import sys
+import os
 from Mensajes import Mensaje
 from Instructor import Instructor
 from Estudiante import Estudiante
@@ -8,7 +8,7 @@ from Comentarios import Comentario
 from Inscripciones import Inscripcion
 
 class Main():
-	#dfgh
+
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Administrador", "Modocur", "Adm@modocur.com", "1234", "01-08-2017")]
@@ -111,7 +111,7 @@ class Main():
 		pass
 
 	def salir(self):
-		sys.exit(0)
+		os._exit(0)
 
 	def ingresar_datos_ficticios(self):
 		"""Crear Instructor1"""
