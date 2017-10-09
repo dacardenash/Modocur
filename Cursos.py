@@ -63,6 +63,7 @@ class Curso:
 			    + ", fecha_creacion= " + self.get_fecha_creacion() + ", instructor= " 
 			    + self.get_instructor().get_nombre() + " " +  self.get_instructor().get_apellido()
 			    + '}')
+	
 
 	"""@staticmethod
     def get_curso(id, lista_curso):

@@ -10,7 +10,6 @@ from Inscripciones import Inscripcion
 class Main():
 
 	lista_curso = []
-	lista_inscripcion = []
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
@@ -64,7 +63,6 @@ class Main():
 		for curso in Main.lista_curso:
 			print(curso.to_string())
 
-
 	def sing_up(self):
 		"""
 		Crear un nuevo usuario
@@ -84,13 +82,13 @@ class Main():
 		role = int(input(Mensaje.mensaje.get("input_role")))
 
 		if role == 1:
-			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento)
+			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento) #Desde Estudiante
 			Main.lista_estudiante.append(usuario)
 			Main.lista_usuarios.append(usuario)
 			print(Mensaje.mensaje.get("usuario_created"))
 		elif role == 2:
 			carrera = input(Mensaje.mensaje.get("input_carer"))
-			usuario = Instructor(nombre, apellido, correo, clave, fecha_nacimiento, carrera)
+			usuario = Instructor(nombre, apellido, correo, clave, fecha_nacimiento, carrera) #Desde Instructor
 			Main.lista_instructor.append(usuario)
 			Main.lista_usuarios.append(usuario)
 			print(Mensaje.mensaje.get("usuario_created"))
@@ -106,15 +104,15 @@ class Main():
 		clave = input(Mensaje.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
 		if(usuario):								#Verifica que el correo existe
-			ingresar = usuario.login(clave)
+			ingresar = usuario.login(clave)			#Verifica que la clave coincida
 			self.break_while_sing_in = True
 
 		if (ingresar and isinstance(usuario, Estudiante)):
-			self.run_estudiante(usuario)
+			self.run_estudiante(usuario)			#Ingresa al sistema como estudiante
 		elif(ingresar and isinstance(usuario, Instructor)):
-			self.run_instructor(usuario)
+			self.run_instructor(usuario)			#Ingresa al sistema como instructor
 		elif(ingresar and isinstance(usuario, Usuario)):
-			self.run_administrador()
+			self.run_administrador()				#Ingresa al sistema como administrador
 		else:
 			print(Mensaje.mensaje.get("login_error"))
 
@@ -129,28 +127,16 @@ class Main():
 		instructor1 = Instructor("Juan", "Perez", "Juanpe@instructor.com", "1234", "05-20-1998", "economía")
 		Main.lista_instructor.append(instructor1)
 		Main.lista_usuarios.append(instructor1)
-
 		"""Crear Estudiante1"""
 		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "1234", "04-07-2005")
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
-
 		"""Crear Cursos"""
 		curso1 = Curso("1", "Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso1)
-
 		curso2 = Curso("2", "Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso2)
-
-		"""Mostrar todos los usuarios registrados (para realizar pruebas)"""
-		print(Main.display_usuarios())
-		Main.display_cursos()
-
-	def logout(self, usuario = lista_usuarios[0]):
-		usuario = None
-		self.break_while_sing_in = False
-		print(Mensaje.mensaje.get("close_sesion"))
-		
+	
 	def run(self):
 		while self.break_while:
 			print(Mensaje.mensaje.get("menu_inicio"))
@@ -191,15 +177,23 @@ class Main():
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
 
+	def logout(self, usuario = None):
+		self.break_while_sing_in = False
+		print(Mensaje.mensaje.get("close_sesion"))
+
 	def new_course(self,instructor):
+		"""
+		Crear un nuevo curso
+		"""
 		id = input(Mensaje.mensaje.get("input_id"))
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		categoria = input(Mensaje.mensaje.get("input_category"))
 		descripcion = input(Mensaje.mensaje.get("input_description"))
 		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
-		curso = Curso(id, nombre, categoria, descripcion, fecha_creacion, instructor)
+		curso = Curso(id, nombre, categoria, descripcion, fecha_creacion, instructor) #Desde curso
 		print(Mensaje.mensaje.get("course_created"))
 		Main.lista_curso.append(curso)
+
 		Main.display_cursos()
 
 if __name__ == "__main__":
