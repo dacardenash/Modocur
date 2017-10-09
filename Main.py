@@ -3,6 +3,9 @@ from Mensajes import Mensajes
 from Instructor import Instructor
 from Estudiante import Estudiante
 from Usuario import Usuario
+from Cursos import Cursos
+from Comentarios import Comentarios
+from Inscripciones import Inscripciones
 
 class Main():
 
@@ -172,12 +175,4 @@ class Main():
 if __name__ == "__main__":
 	Main().run()
   
-"""
-		def poblar_txt(self):
-		file = open("FicheroInstructor.txt","r")
-		for registro in file:
-			info = registro.split('@@')
-			instruc = Instructor(info[0],info[1],info[2],info[3],info[4],info[5],info[6])
-			Instructor.poblar_instructor(instruc, Main.lista_instructor)
-		print(Instructor.mostrar_usuarios(Main.lista_instructor))"""
 
