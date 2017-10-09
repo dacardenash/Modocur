@@ -1,5 +1,6 @@
-
 class Usuario:
+
+	lista_usuarios = []
 
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._nombre = nombre
@@ -7,6 +8,7 @@ class Usuario:
 		self._correo = correo
 		self._clave = clave
 		self._fecha_nacimiento = fecha_nacimiento
+		Usuario.lista_usuarios.append(self)
 
 	def get_nombre(self):
 		return self._nombre
@@ -24,7 +26,9 @@ class Usuario:
 		return self._correo
 
 	def set_correo(self, correo):
-		self._correo = correo
+		existe = Usuario.buscar_por_correo(Usuario.lista_usuarios, correo)
+		if(not existe and correo != "Adm@modocur.com"):
+			self._correo = correo
 
 	def get_clave(self):
 		return self._clave
@@ -46,8 +50,6 @@ class Usuario:
 	def login(self, clave):
 		if(self.get_clave() == clave):
 			return True
-		else:
-			False
 
 	@staticmethod
 	def buscar_por_correo(usuarios, correo):
