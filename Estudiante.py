@@ -11,6 +11,6 @@ class Estudiante(Usuario):
 
 	#@override
 	def to_string(self) :
-		return ("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
+		return ("Estudiante{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
 			    + ", correo= " + self.get_correo() + ", clave= " + self.get_clave()
 			    + ", fecha_nacimiento= " + self.get_fecha_nacimiento() + '}')
