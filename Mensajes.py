@@ -1,4 +1,4 @@
-class Mensajes():
+class Mensaje():
   
 	mensaje = {
 		"menu_inicio" : """

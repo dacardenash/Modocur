@@ -1,2 +1,2 @@
-class Comentarios:
+class Comentario:
 	pass
