@@ -132,10 +132,14 @@ class Main():
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 		"""Crear Cursos"""
-		curso1 = Curso("1", "Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
+		curso1 = Curso()
+		curso1.crear_curso("Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso1)
-		curso2 = Curso("2", "Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
+
+		curso2 = Curso()
+		curso2.crear_curso("Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso2)
+
 	
 	def run(self):
 		while self.break_while:
@@ -185,14 +189,15 @@ class Main():
 		"""
 		Crear un nuevo curso
 		"""
-		id = Curso.cursos_creados + 1
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		categoria = input(Mensaje.mensaje.get("input_category"))
 		descripcion = input(Mensaje.mensaje.get("input_description"))
 		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
-		curso = Curso(id, nombre, categoria, descripcion, fecha_creacion, instructor) #Desde curso
-		print(Mensaje.mensaje.get("course_created"))
+		curso = Curso() #Desde curso
+		curso.crear_curso(nombre, categoria, descripcion, fecha_creacion, instructor)
 		Main.lista_curso.append(curso)
+		print(Mensaje.mensaje.get("course_created"))
+		
 
 		Main.display_cursos()
 

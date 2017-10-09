@@ -3,19 +3,17 @@ class Curso:
 	lista_curso = []
 	cursos_creados  = 0
 
-	def __init__(self, id, nombre, categoria, descripcion, fecha_creacion, instructor):
+	def __init__(self):
 		self._id = id
-		self._nombre = nombre
-		self._categoria = categoria
-		self._descripcion = descripcion 
-		self._fecha_creacion = fecha_creacion
+		self._nombre = ""
+		self._categoria = ""
+		self._descripcion = ""
+		self._fecha_creacion = ""
 		self._estado = True
-		self._instructor = instructor
-		instructor._cursos.append(self)
+		self._instructor = None
 		self._modulos = []
 		self._inscripcion = []
-		Curso.lista_curso.append(self)
-		Curso.cursos_creados += 1
+		
 
 	def get_id(self):
 		return self._id
@@ -58,6 +56,19 @@ class Curso:
 
 	def set_instructor(self, instructor):
 		self._instructor = instructor
+
+	def crear_curso(self, nombre, categoria, descripcion, fecha_creacion, instructor):
+		Curso.cursos_creados += 1
+		self.set_id(Curso.cursos_creados)
+		self.set_nombre(nombre)
+		self.set_categoria(categoria)
+		self.set_descripcion(descripcion)
+		self.set_fecha_creacion(fecha_creacion)
+		self.set_instructor(instructor)
+		instructor._cursos.append(self)
+		Curso.lista_curso.append(self)
+
+
 
 	def to_string(self) :
 		return ("Curso{" + "id= " + str(self.get_id()) + ", nombre= " + self.get_nombre()
