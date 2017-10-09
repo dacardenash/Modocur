@@ -54,5 +54,6 @@ class Mensaje():
     	"input_carer" : "Selecione carrera: ",
     	"usuario_created" : "Registro exitoso",
     	"close_sesion" : "Su sesión se ha cerrado correctamente",
-    	"input_error" : "{0} no es una opcion valida"
+    	"input_error" : "{0} no es una opcion valida",
+    	"mail_exist" : "{0} ya existe"
 	}

@@ -9,8 +9,8 @@ from Inscripciones import Inscripcion
 
 class Main():
 
-    lista_curso = []
-    lista_inscripcion = []
+    #lista_curso = []
+    #lista_inscripcion = []
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
@@ -24,7 +24,7 @@ class Main():
 		"5": self.ingresar_datos_ficticios
 		}
 		self.choices_menu_estudiante = {
-		"2" : self.inscribirse
+		#"2" : self.inscribirse
 		"4" : self.logout
 		}
 		self.choices_menu_instructor = {
@@ -34,6 +34,7 @@ class Main():
 		"3" : self.logout
 		}
 		self.break_while = True
+		self.break_while_sing_in = False
 
 	@staticmethod	
 	def display_usuarios():
@@ -50,32 +51,24 @@ class Main():
 		for estudiante in Main.lista_estudiante:
 			print(estudiante.to_string())
 
-	@staticmethod	
-	def display_menu_inicio():
-		print(Mensaje.mensaje.get("menu_inicio"))
-
-	@staticmethod
-	def display_menu_instructor():
-		print(Mensaje.mensaje.get("menu_instructor"))
-
-	@staticmethod
-	def display_menu_estudiante():
-		print (Mensaje.mensaje.get("menu_estudiante"))
-
-	@staticmethod
-	def display_menu_administrador():
-		print (Mensaje.mensaje.get("menu_administrador"))
-
 	def sing_up(self):
 		"""
 		Crear un nuevo usuario
 		"""
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		apellido = input(Mensaje.mensaje.get("input_lastname"))
+
 		correo = input(Mensaje.mensaje.get("input_mail"))
+		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
+		while(usuario):
+			print(Mensaje.mensaje.get("mail_exist").format(correo))
+			correo = input(Mensaje.mensaje.get("input_mail"))
+			usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
+
 		clave = input(Mensaje.mensaje.get("input_key"))
 		fecha_nacimiento = input(Mensaje.mensaje.get("input_birth_date"))
 		role = int(input(Mensaje.mensaje.get("input_role")))
+
 		if role == 1:
 			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento)
 			Main.lista_estudiante.append(usuario)
@@ -99,7 +92,8 @@ class Main():
 		clave = input(Mensaje.mensaje.get("input_key"))
 		usuario = Usuario.buscar_por_correo(Main.lista_usuarios, correo)
 		if(usuario):								#Verifica que el correo existe
-			ingresar = usuario.login(clave) 		#Ingresar es true si la clave conicide
+			ingresar = usuario.login(clave)
+			self.break_while_sing_in = True
 
 		if (ingresar and isinstance(usuario, Estudiante)):
 			self.run_estudiante()
@@ -133,11 +127,11 @@ class Main():
 	def logout(self):
 		usuario = None
 		print(Mensaje.mensaje.get("close_sesion"))
-		self.run()
+		self.break_while_sing_in = False
 
 	def run(self):
 		while self.break_while:
-			Main.display_menu_inicio()
+			print(Mensaje.mensaje.get("menu_inicio"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_principal.get(option)
 			if action:
@@ -146,8 +140,8 @@ class Main():
 				print(Mensaje.mensaje.get("input_error").format(option))
 
 	def run_estudiante(self):
-		while self.break_while:
-			Main.display_menu_estudiante()
+		while self.break_while_sing_in:
+			print (Mensaje.mensaje.get("menu_estudiante"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_estudiante.get(option)
 			if action:
@@ -156,8 +150,8 @@ class Main():
 				print(Mensaje.mensaje.get("input_error").format(option))
 
 	def run_instructor(self):
-		while self.break_while:
-			Main.display_menu_instructor()
+		while self.break_while_sing_in:
+			print(Mensaje.mensaje.get("menu_instructor"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_instructor.get(option)
 			if action:
@@ -166,8 +160,8 @@ class Main():
 				print(Mensaje.mensaje.get("input_error").format(option))
 
 	def run_administrador(self):
-		while self.break_while:
-			Main.display_menu_administrador()
+		while self.break_while_sing_in:
+			print (Mensaje.mensaje.get("menu_administrador"))
 			option = input(Mensaje.mensaje.get("operation"))
 			action = self.choices_menu_administrador.get(option)
 			if action:
@@ -175,13 +169,10 @@ class Main():
 			else:
 				print(Mensaje.mensaje.get("input_error").format(option))
 
-	def inscribirse(self):
-		Curso.consultar_cursos(lista_curso)
-		vble=input("dijite el codigo del curso que desea inscribir:")
-		vble2=Curso.get_curso(vble, lista_curso)
-		vble3=
-
 if __name__ == "__main__":
 	Main().run()
+
+
+
   
 
