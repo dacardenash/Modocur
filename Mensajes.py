@@ -55,7 +55,12 @@ class Mensaje():
     	"input_key" : "Ingrese clave: ",
     	"input_birth_date" : "Ingrese fecha de nacimiento: ",
     	"input_carer" : "Selecione carrera: ",
+    	"input_id" : "ingrese id",
+    	"input_category" : "Ingrese categoria",
+    	"input_description" : "Ingrese la descripción",
+    	"input_date" : "Ingrese la fecha",
     	"usuario_created" : "Registro exitoso",
+    	"course_created" : "Curso creado",
     	"close_sesion" : "Su sesión se ha cerrado correctamente",
     	"input_error" : "{0} no es una opcion valida",
     	"mail_exist" : "{0} ya existe"

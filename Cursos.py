@@ -1,4 +1,3 @@
-
 class Curso:
 
 	lista_curso = []
@@ -73,7 +72,6 @@ class Curso:
     			respuesta=reg
     			return respuesta"""
 		
-
 	"""@staticmethod
     def consultar_cursos(lista_curso):
     	respuesta=None
@@ -82,7 +80,7 @@ class Curso:
 
     	return (respuesta)"""
 
-"""def inscribirse(self):
+	"""def inscribirse(self):
 		Curso.consultar_cursos(lista_curso)
 		vble=input("dijite el codigo del curso que desea inscribir:")
 		vble2=Curso.get_curso(vble, lista_curso)

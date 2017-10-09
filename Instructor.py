@@ -1,4 +1,5 @@
 from Usuario import Usuario
+from Cursos import Curso
 
 class Instructor(Usuario):
 
