@@ -4,7 +4,7 @@ class Curso:
 	cursos_creados  = 0
 
 	def __init__(self):
-		self._id = id
+		self._id = 0
 		self._nombre = ""
 		self._categoria = ""
 		self._descripcion = ""
@@ -13,8 +13,10 @@ class Curso:
 		self._instructor = None
 		self._modulos = []
 		self._inscripcion = []
-		
 
+	def get_inscripcion(self):
+		return self._inscripcion
+		
 	def get_id(self):
 		return self._id
 
@@ -76,15 +78,12 @@ class Curso:
 			    + ", fecha_creacion= " + self.get_fecha_creacion() + ", instructor= " 
 			    + self.get_instructor().get_nombre() + " " +  self.get_instructor().get_apellido()
 			    + '}')
-
-
-	"""@staticmethod
-    def get_curso(id, lista_curso):
-    	respuesta=None
-    	for reg in lista_curso:
-    		if reg.get_id()==id:
-    			respuesta=reg
-    			return respuesta"""
+		
+	@staticmethod
+	def get_curso(id, lista_curso):
+		for curso in lista_curso:
+			if curso.get_id()==id:
+				return curso
 		
 	"""@staticmethod
     def consultar_cursos(lista_curso):
@@ -94,8 +93,3 @@ class Curso:
 
     	return (respuesta)"""
 
-	"""def inscribirse(self):
-		Curso.consultar_cursos(lista_curso)
-		vble=input("dijite el codigo del curso que desea inscribir:")
-		vble2=Curso.get_curso(vble, lista_curso)
-		vble3="""

@@ -23,7 +23,9 @@ class Main():
 		"5": self.ingresar_datos_ficticios
 		}
 		self.choices_menu_estudiante = {
-		#"2" : self.inscribirse
+		"1" : Main.display_cursos,
+		"2" : self.inscription,
+		"3" : self.my_courses,
 		"4" : self.logout
 		}
 		self.choices_menu_instructor = {
@@ -38,6 +40,8 @@ class Main():
 		}
 		self.break_while = True
 		self.break_while_sing_in = False
+
+#-------------------------------------------------------------------------------------------#
 
 	@staticmethod	
 	def display_usuarios():
@@ -59,13 +63,15 @@ class Main():
 			print(estudiante.to_string())
 
 	@staticmethod		
-	def display_cursos():
+	def display_cursos(usuario = None):
 		for curso in Main.lista_curso:
 			print(curso.to_string())
 
+#-------------------------------------	Menu Principal	---------------------------------------#
+
 	def sing_up(self):
 		"""
-		Crear un nuevo usuario
+		Registrar un nuevo usuario
 		"""
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		apellido = input(Mensaje.mensaje.get("input_lastname"))
@@ -140,6 +146,38 @@ class Main():
 		curso2.crear_curso("Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
 		Main.lista_curso.append(curso2)
 
+#----------------------------------------------Menú Estudiante-----------------------------------------------#
+
+	def inscription(self,estudiante):
+		Main.display_cursos()
+		id_curso = int(input(Mensaje.mensaje.get("Id_course")))
+		curso = Curso.get_curso(id_curso, Main.lista_curso)
+		Inscripcion.inscribirse(estudiante, curso)
+		print(Mensaje.mensaje.get("usuario_created"))
+
+	def my_courses(self,estudiante):
+		for inscripcion in estudiante.get_inscripciones():
+			print(inscripcion.to_string())
+
+
+#---------------------------------------------- Menú Instructor --------------------------------------------#
+
+	def new_course(self,instructor):
+		"""
+		Crear un nuevo curso
+		"""
+		nombre = input(Mensaje.mensaje.get("input_name"))
+		categoria = input(Mensaje.mensaje.get("input_category"))
+		descripcion = input(Mensaje.mensaje.get("input_description"))
+		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
+		curso = Curso() 
+		curso.crear_curso(nombre, categoria, descripcion, fecha_creacion, instructor) #Desde curso
+		Main.lista_curso.append(curso)
+		print(Mensaje.mensaje.get("course_created"))
+
+		Main.display_cursos()
+
+#---------------------------------------- Ejecución --------------------------------------------#
 	
 	def run(self):
 		while self.break_while:
@@ -185,21 +223,7 @@ class Main():
 		self.break_while_sing_in = False
 		print(Mensaje.mensaje.get("close_sesion"))
 
-	def new_course(self,instructor):
-		"""
-		Crear un nuevo curso
-		"""
-		nombre = input(Mensaje.mensaje.get("input_name"))
-		categoria = input(Mensaje.mensaje.get("input_category"))
-		descripcion = input(Mensaje.mensaje.get("input_description"))
-		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
-		curso = Curso() #Desde curso
-		curso.crear_curso(nombre, categoria, descripcion, fecha_creacion, instructor)
-		Main.lista_curso.append(curso)
-		print(Mensaje.mensaje.get("course_created"))
-		
-
-		Main.display_cursos()
+#---------------------------------------------Main---------------------------------------------------#
 
 if __name__ == "__main__":
 	Main().run()

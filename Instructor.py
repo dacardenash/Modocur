@@ -21,8 +21,6 @@ class Instructor(Usuario):
 	def get_cursos(self):
 		return self._cursos
 
-
-
 	#@override
 	def to_string(self) :
 		return ("Instructor{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
