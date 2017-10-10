@@ -8,6 +8,10 @@ class Estudiante(Usuario):
 		super().__init__(nombre, apellido, correo, clave, fecha_nacimiento)
 		Estudiante.lista_estudiante.append(self)
 		self._comentarios = []
+		self._inscripciones = []
+
+	def get_inscripciones(self):
+		return self._inscripciones
 
 	#@override
 	def to_string(self) :

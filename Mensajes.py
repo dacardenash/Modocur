@@ -63,5 +63,6 @@ class Mensaje():
     	"course_created" : "Curso creado",
     	"close_sesion" : "Su sesión se ha cerrado correctamente",
     	"input_error" : "{0} no es una opcion valida",
-    	"mail_exist" : "{0} ya existe"
+    	"mail_exist" : "{0} ya existe",
+    	"Id_course" : "Seleccione el id del curso: "
 	}
