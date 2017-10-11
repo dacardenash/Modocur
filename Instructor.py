@@ -3,14 +3,13 @@ from Cursos import Curso
 
 class Instructor(Usuario):
 
-	lista_instructor = []
+	#lista_instructor = []
 
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento, carrera):
 		super().__init__(nombre, apellido, correo, clave, fecha_nacimiento)
 		self._carrera = carrera
 		self._cursos = []
-		self._comentarios = []
-		Instructor.lista_instructor.append(self)
+		#Instructor.lista_instructor.append(self)
 		
 	def get_carrera(self):
 		return self._carrera

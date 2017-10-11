@@ -1,6 +1,6 @@
 class Usuario:
 
-	lista_usuarios = []
+	#lista_usuarios = []
 
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		self._nombre = nombre
@@ -8,7 +8,8 @@ class Usuario:
 		self._correo = correo
 		self._clave = clave
 		self._fecha_nacimiento = fecha_nacimiento
-		Usuario.lista_usuarios.append(self)
+		self._comentario = []
+		#Usuario.lista_usuarios.append(self)
 
 	def get_nombre(self):
 		return self._nombre
@@ -41,6 +42,9 @@ class Usuario:
 
 	def set_fecha_nacimiento(self, fecha_de_nacimiento):
 		self._fecha_nacimiento = fecha_de_nacimiento
+
+	def get_comentario(self):
+		return self._comentario
 
 	def to_string(self):
 		return("Usuario{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
