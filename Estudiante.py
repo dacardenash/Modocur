@@ -7,7 +7,7 @@ class Estudiante(Usuario):
 	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento):
 		super().__init__(nombre, apellido, correo, clave, fecha_nacimiento)
 		Estudiante.lista_estudiante.append(self)
-		self._comentarios = []
+		#self._comentarios = []
 		self._inscripciones = []
 
 	def get_inscripciones(self):

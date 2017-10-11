@@ -1,18 +1,23 @@
+import datetime
+
 class Curso:
 
-	lista_curso = []
-	cursos_creados  = 0
+	#lista_curso = []
+	#cursos_creados  = 0
 
 	def __init__(self):
 		self._id = 0
 		self._nombre = ""
 		self._categoria = ""
 		self._descripcion = ""
-		self._fecha_creacion = ""
+		self._fecha_creacion =  datetime.date.Today()
 		self._estado = True
 		self._instructor = None
 		self._modulos = []
 		self._inscripcion = []
+
+	def get_modulos(self):
+		return self._modulos
 
 	def get_inscripcion(self):
 		return self._inscripcion
@@ -60,12 +65,12 @@ class Curso:
 		self._instructor = instructor
 
 	def crear_curso(self, nombre, categoria, descripcion, fecha_creacion, instructor):
-		Curso.cursos_creados += 1
+		#Curso.cursos_creados += 1
 		self.set_id(Curso.cursos_creados)
 		self.set_nombre(nombre)
 		self.set_categoria(categoria)
 		self.set_descripcion(descripcion)
-		self.set_fecha_creacion(fecha_creacion)
+		#self.set_fecha_creacion(fecha_creacion)
 		self.set_instructor(instructor)
 		instructor._cursos.append(self)
 		Curso.lista_curso.append(self)
@@ -84,7 +89,22 @@ class Curso:
 		for curso in lista_curso:
 			if curso.get_id()==id:
 				return curso
-		
+	
+	@staticmethod
+	def lista_cursos(lista_curso):
+		resp = ""
+		for curso in lista_curso:
+			resp = resp + curso.get_id() + ". " + curso.get_nombre() + "/n"
+		return resp
+
+	@staticmethod
+	def retornar_objeto(id_curso,lista):
+		res = None
+		for reg in lista:
+			if(reg.get_id() == id_curso):
+				res = reg
+		return res
+
 	"""@staticmethod
     def consultar_cursos(lista_curso):
     	respuesta=None

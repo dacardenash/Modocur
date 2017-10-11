@@ -9,34 +9,52 @@ from Inscripciones import Inscripcion
 
 class Main():
 
+	#usuario_logueado = None
+	
 	lista_curso = []
 	lista_instructor = []
 	lista_estudiante = []
 	lista_usuarios = [Usuario("Diego", "Cardenas", "Adm@modocur.com", "1234", "01-08-2017")]
+	lista_inscripcion = []
+	lista_modulo = []
+	lista_comentario = []
 
 	def __init__(self):
 		self.choices_menu_principal = {
-		"1": self.sing_up,
-		"2": self.sing_in,
-		"3": self.read_txt,
-		"4": self.salir,
-		"5": self.ingresar_datos_ficticios
+			"1": self.sing_up,
+			"2": self.sing_in,
+			"3": self.read_txt,
+			"4": self.salir,
+			"5": self.ingresar_datos_ficticios
 		}
 		self.choices_menu_estudiante = {
-		"1" : Main.display_cursos,
-		"2" : self.inscription,
-		"3" : self.my_courses,
-		"4" : self.logout
+			"1" : Main.display_cursos,
+			"2" : self.inscription,
+			"3" : self.my_courses,
+			"4" : self.consultar_modulos,
+			"5" : self.comentar_estudiante,
+			"6" : self.logout
 		}
 		self.choices_menu_instructor = {
-		"1" : self.new_course,
-		"14" : self.logout
+			"1" : self.new_course,
+			"2" : self.modificar_curso,
+			"3" : self.consultar_creados,
+			"4" : self.comentar_instructor,
+			"5" : self.agregar_modulo,
+			"6" : self.promedio_progreso,      #de los estudiantes de un curso
+			"7" : self.cerrar_curso,
+			"8" : self.mayor_promedio,
+			"9" : self.curso_mayor,
+			"10" : self.generar_reporte,
+			"11" : self.porcentaje_ganador,
+			"12" : self.modulo_comentado,
+			"13" : self.logout
 		}
 		self.choices_menu_administrador = {
-		"1" : Main.display_estudiantes,
-		"2" : Main.display_instructores,
-		"3" : Main.display_cursos,
-		"4" : self.logout
+			"1" : Main.display_estudiantes,
+			"2" : Main.display_instructores,
+			"3" : Main.display_cursos,
+			"4" : self.logout
 		}
 		self.break_while = True
 		self.break_while_sing_in = False
@@ -65,10 +83,11 @@ class Main():
 	@staticmethod		
 	def display_cursos(usuario = None):
 		for curso in Main.lista_curso:
-			print(curso.to_string())
+			if(curso.getEstado() == True):
+				print(curso.to_string())
 
 #-------------------------------------	Menu Principal	---------------------------------------#
-
+	
 	def sing_up(self):
 		"""
 		Registrar un nuevo usuario
@@ -137,6 +156,11 @@ class Main():
 		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "1234", "04-07-2005")
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
+
+		estudiante2 = Estudiante("Prueba", "1", "diego", "0000", "04-07-2005")
+		Main.lista_usuarios.append(estudiante2)
+		Main.lista_estudiante.append(estudiante2)
+		
 		"""Crear Cursos"""
 		curso1 = Curso()
 		curso1.crear_curso("Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
@@ -148,17 +172,32 @@ class Main():
 
 #----------------------------------------------Menú Estudiante-----------------------------------------------#
 
-	def inscription(self,estudiante):
+	def inscription(self, estudiante):
 		Main.display_cursos()
 		id_curso = int(input(Mensaje.mensaje.get("Id_course")))
 		curso = Curso.get_curso(id_curso, Main.lista_curso)
-		Inscripcion.inscribirse(estudiante, curso)
+		Inscripcion.inscribirse(estudiante, curso, lista_inscripcion)
 		print(Mensaje.mensaje.get("usuario_created"))
 
-	def my_courses(self,estudiante):
+	def my_courses(self, estudiante):
 		for inscripcion in estudiante.get_inscripciones():
 			print(inscripcion.to_string())
 
+	def consultar_modulos(self, estudiante):
+		self.my_courses()
+		idcurso = input("Seleccione el id del curso: ")
+		print(Modulo.consultar_modulos(idcurso, lista_modulo))
+		idmodulo = input("Ingrese numero del modulo que desea ver: ")
+		print(Modulo.ver_modulo(idmodulo, lista_modulo))
+
+	def comentar_estudiante(self, usuario):
+		self.my_courses()
+		idcurso = input("Seleccione el id del curso: ")
+		print(Modulo.consultar_modulos(idcurso, lista_modulo))
+		idmod = input("Ingrese el id del modulo: ")
+		modulo = Modulo.retornar_objeto(idmod, lista_modulo)
+		descripcion = input("Ingrese su comentario:")
+		Modulo.comentar(descripcion, usuario, modulo, lista_comentario)
 
 #---------------------------------------------- Menú Instructor --------------------------------------------#
 
@@ -169,13 +208,59 @@ class Main():
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		categoria = input(Mensaje.mensaje.get("input_category"))
 		descripcion = input(Mensaje.mensaje.get("input_description"))
-		fecha_creacion = input(Mensaje.mensaje.get("input_date"))
+		#fecha_creacion = input(Mensaje.mensaje.get("input_date"))
 		curso = Curso() 
 		curso.crear_curso(nombre, categoria, descripcion, fecha_creacion, instructor) #Desde curso
 		Main.lista_curso.append(curso)
 		print(Mensaje.mensaje.get("course_created"))
 
 		Main.display_cursos()
+
+	#def modificar_curso(self, instructor):
+	#	pass
+
+	def consultar_creados(self, instructor):
+		print(Curso.lista_curso(instructor.get_cursos))
+
+	def comentar_instructor(self, usuario):
+		self.consultar_creados(usuario)
+		idcurso = input("Seleccione el id del curso: ")
+		print(Modulo.consultar_modulos(idcurso, lista_modulo))
+		idmod = input("Ingrese el id del modulo: ")
+		modulo = Modulo.retornar_objeto(idmod, lista_modulo)
+		descripcion = input("Ingrese su comentario:")
+		Modulo.comentar(descripcion, usuario, modulo, lista_comentario)
+
+	def agregar_modulo(self, instructor):
+		self.consultar_creados(usuario)
+		idcurso = input("Seleccione el id del curso: ")
+		curso = Curso.retornar_objeto(idcurso, lista_curso)
+		idmod = input("Ingrese el id del modulo: ")
+		titulo = input("Ingrese el titulo")
+		descripcion = input("Ingrese la descricpcion")
+		url = input("Ingrese la url: ")
+		Modulo.agregar_modulo(idmod, titulo, descripcion, curso, url, lista_curso)
+
+	def promedio_progreso(self, instructor):
+		pass
+
+	def cerrar_curso(self, instructor):
+		pass
+
+	def mayor_promedio(self, instructor):
+		pass
+
+	def curso_mayor(self, instructor):
+		pass
+
+	def generar_reporte(self, instructor):
+		pass
+
+	def porcentaje_ganador(self, instructor):
+		pass
+
+	def modulo_comentado(self, instructor):
+		pass
 
 #---------------------------------------- Ejecución --------------------------------------------#
 	

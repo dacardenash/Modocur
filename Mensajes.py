@@ -18,18 +18,18 @@ class Mensaje():
     		Menú Instructor
     		Operaciones
 			1. Crear curso
-			2. Modificar curso
-			4. Consultar cursos creados
-			3. Comentar
+			2. Modificar curso (Hay que eliminarlo)
+			3. Consultar cursos creados
+			4. Comentar
 			5. Agregar modulo
-			7. ⌂--Promedio de progreso estudiantes
-			8. ⌂--Cerrar curso (Cierra el curso y calcula la nota final de cada estudiante)
-			9. ⌂--Mayor promedio de curso
-			10. ⌂-- Consultar curso con mayor N° estudiantes
-			11. ⌂-- Generar reporte fecha | curso | n° estudiantes | promedio
-			12. ⌂-- Porcentaje ganadores y perdedores de un curso 
-			13. ⌂-- Modulo con mayor numero comentarios
-			14. Cerrar sesion
+			6. ⌂--Promedio de progreso estudiantes
+			7. ⌂--Cerrar curso (Cierra el curso y calcula la nota final de cada estudiante)
+			8. ⌂--Mayor promedio de curso
+			9. ⌂-- Consultar curso con mayor N° estudiantes
+			10. ⌂-- Generar reporte fecha | curso | n° estudiantes | promedio
+			11. ⌂-- Porcentaje ganadores y perdedores de un curso 
+			12. ⌂-- Modulo con mayor numero comentarios
+			13. Cerrar sesion
 		""",
     	"menu_estudiante" : """
     		Menú Estudiante
@@ -37,7 +37,9 @@ class Mensaje():
 			1. Ver cursos disponibles
 			2. Inscribirse
 			3. Ver cursos inscritos
-			4. Cerrar sesión
+            4. Ver modulos de curso
+            5. Comentar
+			6. Cerrar sesión
     	""",
     	"menu_administrador" : """
     		Menú Administrador
