@@ -1,20 +1,22 @@
 import datetime
+from inscripciones import Inscripcion
 
 class Curso:
 
-	#lista_curso = []
-	#cursos_creados  = 0
+	cursos_creados  = 1000
 
-	def __init__(self):
-		self._id = 0
-		self._nombre = ""
-		self._categoria = ""
-		self._descripcion = ""
-		self._fecha_creacion =  datetime.date.Today()
+	def __init__(self, nombre, categoria, descripcion, instructor):
+		Curso.cursos_creados += 1
+		self._id = Curso.cursos_creados
+		self._nombre = nombre
+		self._categoria = categoria
+		self._descripcion = descripcion
+		self._fecha_creacion = datetime.date.Today()
 		self._estado = True
-		self._instructor = None
+		self._instructor = instructor
 		self._modulos = []
 		self._inscripcion = []
+		instructor.set_cursos(self)
 
 	def get_modulos(self):
 		return self._modulos
@@ -25,8 +27,8 @@ class Curso:
 	def get_id(self):
 		return self._id
 
-	def set_id(self, id):
-		self._id = id
+	def set_id(self, iden):
+		self._id = iden
 
 	def get_nombre(self):
 		return self._nombre
@@ -64,18 +66,8 @@ class Curso:
 	def set_instructor(self, instructor):
 		self._instructor = instructor
 
-	def crear_curso(self, nombre, categoria, descripcion, fecha_creacion, instructor):
-		#Curso.cursos_creados += 1
-		self.set_id(Curso.cursos_creados)
-		self.set_nombre(nombre)
-		self.set_categoria(categoria)
-		self.set_descripcion(descripcion)
-		#self.set_fecha_creacion(fecha_creacion)
-		self.set_instructor(instructor)
-		instructor._cursos.append(self)
-		Curso.lista_curso.append(self)
-
-
+	def cerrar_curso(self):
+		self.set_estado(False)
 
 	def to_string(self) :
 		return ("Curso{" + "id= " + str(self.get_id()) + ", nombre= " + self.get_nombre()
@@ -105,11 +97,32 @@ class Curso:
 				res = reg
 		return res
 
-	"""@staticmethod
-    def consultar_cursos(lista_curso):
-    	respuesta=None
-    	for reg in lista_curso:
-    		respuesta+=" "+reg.get_id()+"-"+reg.get_nombre()+"/n"
+	@staticmethod
+	def curso_mayor(lista_curso):
+		con = 0
+		obj = None
+		for curso in lista_curso:
+			if(con > curso.get_inscripcion().lenght()):
+				con = curso.get_inscripcion().lenght()
+				obj = curso
+		return "Codigo: " + str(obj.get_id()) + "| Nombre: " + str(obj.get_nombre()) + "| N° estudiantes: " + str(obj.get_inscripcion().lenght())
 
-    	return (respuesta)"""
+	@staticmethod
+	def generar_reporte(fecha, lista):
+		res = ""
+		for curso in lista:
+			if(curso.get_fecha_creacion() >= fecha):
+				res = res + " Fecha creacion: " + curso.get_fecha_creacion() + " | Nombre: " + 
+					curso.get_nombre() + " | N° inscripciones:" + curso.get_inscripcion().lenght() + 
+					" | Promedio: " + Inscripcion.promedio_nota_general(curso.get_inscripcion()) + "/n"
+		return res
+
+	@staticmethod
+	def porcentaje_ganador(curso):
+		inscripciones = curso.get_inscripcion()
+		acu = 0
+		for inscripc in inscripciones:
+			if(inscrip.get_Nota() >= 3):
+				acu = acu + 1
+		return ("%.1f" % ((acu * 100) / inscripciones.lenght()))
 

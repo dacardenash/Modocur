@@ -1,16 +1,12 @@
 from Usuario import Usuario
-from Cursos import Curso
 
 class Instructor(Usuario):
 
-	#lista_instructor = []
-
-	def __init__(self, nombre, apellido, correo, clave, fecha_nacimiento, carrera):
-		super().__init__(nombre, apellido, correo, clave, fecha_nacimiento)
+	def __init__(self, identificador, nombre, apellido, correo, clave, fecha_nacimiento, carrera):
+		super().__init__(identificador, nombre, apellido, correo, clave, fecha_nacimiento)
 		self._carrera = carrera
 		self._cursos = []
-		#Instructor.lista_instructor.append(self)
-		
+
 	def get_carrera(self):
 		return self._carrera
 
@@ -20,7 +16,10 @@ class Instructor(Usuario):
 	def get_cursos(self):
 		return self._cursos
 
-	#@override
+	def set_cursos(self, curso):
+		self._cursos.append(curso)
+
+	@override
 	def to_string(self) :
 		return ("Instructor{" + "nombre= " + self.get_nombre() + ", apellido= " + self.get_apellido()
 			    + ", correo= " + self.get_correo() + ",clave= " + self.get_clave()

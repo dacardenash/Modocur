@@ -51,6 +51,7 @@ class Mensaje():
     	""",
     	"login_error" : "El correo y/o la contraseña no coinciden",
     	"operation" : "Seleccione la operación deseada: ",
+        "input_identifica" : "Ingrese identificacion: ",
     	"input_name" : "Ingrese nombre: ",
     	"input_lastname" : "Ingrese apellido: ",
     	"input_mail" : "Ingrese correo electronico: ",
@@ -66,5 +67,12 @@ class Mensaje():
     	"close_sesion" : "Su sesión se ha cerrado correctamente",
     	"input_error" : "{0} no es una opcion valida",
     	"mail_exist" : "{0} ya existe",
-    	"Id_course" : "Seleccione el id del curso: "
+    	"Id_course" : "Seleccione el id del curso: ",
+        "input_cod_curso" : "Ingrese código curso: ",
+        "input_cod_modulo" : "Ingrese código modulo: ",
+        "input_comentar" : "Ingrese su comentario: ",
+        "input_titulo_modulo" : "Ingrese titulo modulo: ",
+        "input_descripcion_modulo" : "Ingrese descripcion modulo: ",
+        "input_url_modulo" : "Ingrese url modulo: ",
+        "input_fecha_inicial" : "Ingrese fecha inicial para generar reporte:"
 	}

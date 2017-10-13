@@ -8,8 +8,6 @@ from Comentarios import Comentario
 from Inscripciones import Inscripcion
 
 class Main():
-
-	#usuario_logueado = None
 	
 	lista_curso = []
 	lista_instructor = []
@@ -92,6 +90,7 @@ class Main():
 		"""
 		Registrar un nuevo usuario
 		"""
+		identificacion = input(Mensaje.mensaje.get("input_identifica"))
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		apellido = input(Mensaje.mensaje.get("input_lastname"))
 
@@ -107,15 +106,21 @@ class Main():
 		role = int(input(Mensaje.mensaje.get("input_role")))
 
 		if role == 1:
-			usuario = Estudiante(nombre, apellido, correo, clave, fecha_nacimiento) #Desde Estudiante
+			usuario = Estudiante(identificacion, nombre, apellido, correo, clave, fecha_nacimiento) #Desde Estudiante
 			Main.lista_estudiante.append(usuario)
 			Main.lista_usuarios.append(usuario)
 			print(Mensaje.mensaje.get("usuario_created"))
 		elif role == 2:
 			carrera = input(Mensaje.mensaje.get("input_carer"))
-			usuario = Instructor(nombre, apellido, correo, clave, fecha_nacimiento, carrera) #Desde Instructor
+			usuario = Instructor(identificacion, nombre, apellido, correo, clave, fecha_nacimiento, carrera) #Desde Instructor
 			Main.lista_instructor.append(usuario)
 			Main.lista_usuarios.append(usuario)
+
+
+			file = open("FicheroInstructor.txt","w")
+			file.write(identificacion + "@@" + nombre + "@@" + apellido + "@@" + correo + "@@" + clave + "@@" + fecha_nacimiento + "@@" + carrera)
+			file.close()
+
 			print(Mensaje.mensaje.get("usuario_created"))
 		else:
 			print(Mensaje.mensaje.get("input_error").format(role))
@@ -142,33 +147,60 @@ class Main():
 			print(Mensaje.mensaje.get("login_error"))
 
 	def read_txt(self):
-		pass
+		"""LLenar datos instructores"""
+		file = open("FicheroInstructor.txt","r")
+		for registro in file:
+			info = registro.split('@@')
+			instruc = Instructor(info[0],info[1],info[2],info[3],info[4],info[5],info[6])
+			Main.listar_instructor.append(instruc)
 
 	def salir(self):
 		os._exit(0)
 
 	def ingresar_datos_ficticios(self):
 		"""Crear Instructor1"""
-		instructor1 = Instructor("Juan", "Perez", "Juanpe@instructor.com", "1234", "05-20-1998", "economía")
+		instructor1 = Instructor("000100", "Juan", "Perez", "Juanpe@instructor.com", "1234", "05-20-1998", "economía")
 		Main.lista_instructor.append(instructor1)
 		Main.lista_usuarios.append(instructor1)
 		"""Crear Estudiante1"""
-		estudiante1 = Estudiante("Jorge", "Lopez", "LopezJor@estudiante.com", "1234", "04-07-2005")
+		estudiante1 = Estudiante("100100", "Jorge", "Lopez", "LopezJor@estudiante.com", "1234", "04-07-1992")
 		Main.lista_usuarios.append(estudiante1)
 		Main.lista_estudiante.append(estudiante1)
 
-		estudiante2 = Estudiante("Prueba", "1", "diego", "0000", "04-07-2005")
+		estudiante2 = Estudiante("100102", "Maria", "Canela", "maca@gmail.com", "4321", "04-07-1995")
 		Main.lista_usuarios.append(estudiante2)
 		Main.lista_estudiante.append(estudiante2)
+
+		estudiante3 = Estudiante("100103", "Mauricio", "Duarte", "madu@gmail.com", "0000", "04-07-1996")
+		Main.lista_usuarios.append(estudiante3)
+		Main.lista_estudiante.append(estudiante3)
 		
 		"""Crear Cursos"""
-		curso1 = Curso()
-		curso1.crear_curso("Economía 1", "Ciencias Económicas", "Primer curso de economía", "01-01-2000", instructor1)
+		curso1 = Curso("Economía 1", "Ciencias Económicas", "Curso básico en donde se abordan conceptos básicos de economia moderna ", instructor1)
 		Main.lista_curso.append(curso1)
-
-		curso2 = Curso()
-		curso2.crear_curso("Economía 2", "Ciencias Económicas", "Segundor curso de economía", "01-01-2000", instructor1)
+		curso2 = Curso("Economía 2", "Ciencias Económicas", "Conceptos macro y micro economicos", instructor1)
 		Main.lista_curso.append(curso2)
+
+		"""Crear inscripciones"""
+		inscripcion1 = Inscripcion.inscribirse(estudiante1, curso1, lista_inscripcion)
+		inscripcion2 = Inscripcion.inscribirse(estudiante2, curso1, lista_inscripcion)
+		inscripcion3 = Inscripcion.inscribirse(estudiante3, curso1, lista_inscripcion)
+		inscripcion4 = Inscripcion.inscribirse(estudiante2, curso2, lista_inscripcion)
+
+		"""Crear modulos"""
+		modulo1 = Modulo.agregar_modulo("¿Qué es economia?", "Ciencia que estudia los recursos, la creación de riqueza y la producción, distribución y consumo de bienes y servicios, para satisfacer las necesidades humanas.", "www.youtube.com/eco", curso1, lista_modulo)
+		modulo2 = Modulo.agregar_modulo("Economía teórica", "Busca crear modelos que expliquen los fenómenos económicos.", "www.youtube.com/teo", curso1, lista_modulo)
+		modulo3 = Modulo.agregar_modulo("Economía empírica", "Busca la confirmación o refutación de tales modelos mediante experimentación.", "www.youtube.com", curso1, lista_modulo)
+		modulo4 = Modulo.agregar_modulo("Microenomía", "Estudio de las elecciones que hacen individuos, empresas y gobiernos", "www.youtube.com/micro", curso2, lista_modulo)
+		modulo5 = Modulo.agregar_modulo("Macroeconomía", "Estudio del funcionamiento de la economía nacional y global.", "www.youtube.com/macro", curso2, lista_modulo)
+		modulo6 = Modulo.agregar_modulo("Objeto de estudio", "Estudiar la distribución de los bienes económicos.", "www.youtube.com/objeto", curso2, lista_modulo)
+
+		"""crear comentarios""" 
+		comentario1 = Comentario.comentar("Muy buena explicación.", estudiante1, modulo1, lista_comentario) 
+		comentario2 = Comentario.comentar("No entendi nada.", estudiante2, modulo2, lista_comentario) 
+		comentario3 = Comentario.comentar("El contenido es bueno.", estudiante3, modulo2, lista_comentario) 
+		comentario4 = Comentario.comentar("Ponganse a estudiar.", instructor1, modulo2, lista_comentario) 
+
 
 #----------------------------------------------Menú Estudiante-----------------------------------------------#
 
@@ -184,19 +216,22 @@ class Main():
 			print(inscripcion.to_string())
 
 	def consultar_modulos(self, estudiante):
-		self.my_courses()
-		idcurso = input("Seleccione el id del curso: ")
-		print(Modulo.consultar_modulos(idcurso, lista_modulo))
-		idmodulo = input("Ingrese numero del modulo que desea ver: ")
-		print(Modulo.ver_modulo(idmodulo, lista_modulo))
+		self.my_courses()    
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
+		obj_curso = Curso.retornar_objeto(idcurso, lista_curso)
+		aux_modulos  = obj_curso.get_modulos()
+		obj_inscripcion = Inscripcion.retornar_objeto(idcurso, estudiante.get_inscripciones())
+		print(Modulo.lista_modulos_acceso(aux_modulos, obj_inscripcion.get_Vistos()))
+		idmodulo = input(Mensaje.mensaje.get("input_cod_modulo"))
+		print(Modulo.ver_modulo(idmodulo, aux_modulos, obj_inscripcion))
 
 	def comentar_estudiante(self, usuario):
 		self.my_courses()
-		idcurso = input("Seleccione el id del curso: ")
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
 		print(Modulo.consultar_modulos(idcurso, lista_modulo))
-		idmod = input("Ingrese el id del modulo: ")
+		idmod = input(Mensaje.mensaje.get("input_cod_modulo"))
 		modulo = Modulo.retornar_objeto(idmod, lista_modulo)
-		descripcion = input("Ingrese su comentario:")
+		descripcion = input(Mensaje.mensaje.get("input_comentar"))
 		Modulo.comentar(descripcion, usuario, modulo, lista_comentario)
 
 #---------------------------------------------- Menú Instructor --------------------------------------------#
@@ -208,59 +243,68 @@ class Main():
 		nombre = input(Mensaje.mensaje.get("input_name"))
 		categoria = input(Mensaje.mensaje.get("input_category"))
 		descripcion = input(Mensaje.mensaje.get("input_description"))
-		#fecha_creacion = input(Mensaje.mensaje.get("input_date"))
-		curso = Curso() 
-		curso.crear_curso(nombre, categoria, descripcion, fecha_creacion, instructor) #Desde curso
+		curso = Curso(nombre, categoria, descripcion, instructor) #Desde curso
 		Main.lista_curso.append(curso)
 		print(Mensaje.mensaje.get("course_created"))
-
 		Main.display_cursos()
-
-	#def modificar_curso(self, instructor):
-	#	pass
 
 	def consultar_creados(self, instructor):
 		print(Curso.lista_curso(instructor.get_cursos))
 
 	def comentar_instructor(self, usuario):
 		self.consultar_creados(usuario)
-		idcurso = input("Seleccione el id del curso: ")
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
 		print(Modulo.consultar_modulos(idcurso, lista_modulo))
-		idmod = input("Ingrese el id del modulo: ")
+		idmod = input(Mensaje.mensaje.get("input_cod_modulo"))
 		modulo = Modulo.retornar_objeto(idmod, lista_modulo)
-		descripcion = input("Ingrese su comentario:")
+		descripcion = input(Mensaje.mensaje.get("input_comentar"))
 		Modulo.comentar(descripcion, usuario, modulo, lista_comentario)
 
 	def agregar_modulo(self, instructor):
-		self.consultar_creados(usuario)
-		idcurso = input("Seleccione el id del curso: ")
+		self.consultar_creados(instructor)
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
 		curso = Curso.retornar_objeto(idcurso, lista_curso)
-		idmod = input("Ingrese el id del modulo: ")
-		titulo = input("Ingrese el titulo")
-		descripcion = input("Ingrese la descricpcion")
-		url = input("Ingrese la url: ")
-		Modulo.agregar_modulo(idmod, titulo, descripcion, curso, url, lista_curso)
+		titulo = input(Mensaje.mensaje.get("input_titulo_modulo"))
+		descripcion = input(Mensaje.mensaje.get("input_descripcion_modulo"))
+		url = input(Mensaje.mensaje.get("input_url_modulo"))
+		Modulo.agregar_modulo(titulo, descripcion, curso, url, lista_curso)
 
 	def promedio_progreso(self, instructor):
-		pass
+		self.consultar_creados(instructor)
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
+		curso = Curso.retornar_objeto(idcurso, lista_curso)
+		print(Inscripcion.promedio_progreso_general(curso.get_inscripcion()))
 
 	def cerrar_curso(self, instructor):
-		pass
+		self.consultar_creados(instructor)
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
+		curso = Curso.retornar_objeto(idcurso, lista_curso)
+		curso.cerrar_curso()
+		Inscripcion.calcular_nota(curso.get_inscripcion)
 
 	def mayor_promedio(self, instructor):
-		pass
+		self.consultar_creados(instructor)
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
+		curso = Curso.retornar_objeto(idcurso, lista_curso)
+		inscripcion_mayor =  Inscripcion.mayor_promedio(curso.get_inscripcion())
+		print(inscripcion_mayor)
 
 	def curso_mayor(self, instructor):
-		pass
+		self.consultar_creados(instructor)
+		print(Curso.curso_mayor(instructor.get_cursos()))
 
 	def generar_reporte(self, instructor):
-		pass
+		fecha = input(Mensaje.mensaje.get("input_fecha_inicial"))
+		print(Curso.generar_reporte(fecha, instructor.get_cursos()))
 
 	def porcentaje_ganador(self, instructor):
-		pass
+		self.consultar_creados(instructor)
+		idcurso = input(Mensaje.mensaje.get("input_cod_curso"))
+		curso = Curso.retornar_objeto(idcurso, lista_curso)
+		print("Porcentaje de aprobados: " + Curso.porcentaje_ganador(curso))
 
 	def modulo_comentado(self, instructor):
-		pass
+		print(Modulo.mayor_comentado(instructor.get_cursos())
 
 #---------------------------------------- Ejecución --------------------------------------------#
 	
