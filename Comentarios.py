@@ -2,7 +2,7 @@ import datetime
 
 class Comentario:
 	
-	def __init__(self, descripcion = "", usuario = None, modulo = None):
+	def __init__(self, descripcion, usuario, modulo):
 		self._fecha = datetime.datetime.today()
 		self._descripcion = descripcion
 		self._usuario = usuario

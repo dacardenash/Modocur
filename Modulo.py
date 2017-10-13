@@ -1,15 +1,18 @@
 class Modulo:
 	
-	def __init__(self, ):
-		self._id = ""
-		self._titulo = ""
-		self._descripcion = ""
-		self._curso = None
-		self._url_video = ""
+	identi =  100
+
+	def __init__(self, titulo, descripcion, url, curso):
+		Modulo.identi += 1
+		self._id = Modulo.identi
+		self._titulo = titulo
+		self._descripcion = descripcion
+		self._curso = curso
+		self._url_video = url
 		self._comentarios = []
 
-	def set_id(self, id):
-		self._id = id
+	def set_id(self, iden):
+		self._id = iden
 
 	def get_id(self):
 		return self._id
@@ -36,10 +39,21 @@ class Modulo:
 		return self._comentarios
 
 	@staticmethod 
-	def agregar_modulo(id_modulo, titulo, descripcion, curso, url, lista_modulo):
-		modulo = Modulo(id_modulo, titulo, descripcion, curso, url)
+	def agregar_modulo(titulo, descripcion, url, curso, lista_modulo):
+		modulo = Modulo(titulo, descripcion, url, curso)
 		curso.get_modulos().append(modulo)
 		lista_modulo.append(modulo)
+
+	@staticmethod
+	def lista_modulos_acceso(lista_modulos, numero_vistos):
+		res = ""
+		numero_vistos = numero_vistos + 1
+		for num, mod in enumerate(lista_modulos):
+			if(num <= numero_vistos):
+				res =  res + modulo.get_id() + ". " + modulo.get_titulo() + " Disponible" + "/n"
+			else:
+				res =  res + modulo.get_id() + ". " + modulo.get_titulo() + " Bloqueado" + "/n"
+		return res
 
 	@staticmethod
 	def consultar_modulos(id_curso, lista_modulo):
@@ -50,12 +64,14 @@ class Modulo:
 		return resp
 
 	@staticmethod
-	def ver_modulo(id_modulo, lista_modulo):
+	def ver_modulo(id_modulo, lista_modulo, inscripcion):
 		resp = ""
 		for modulo in lista_modulo:
 			if(modulo.get_id() == id_modulo):
 				resp = resp + modulo.get_id() + ". " + modulo.get_titulo() + "/n" + modulo.get_descripcion() + "/n" + modulo.get_url()
-		return resp	
+				inscripcion.set_Vistos(inscripcion.get_vistos() + 1)
+				inscripcion.calcular_progreso(lista_modulo.length())
+		return resp
 
 	@staticmethod
 	def retornar_objeto(id_modulo, lista_modulo):
@@ -65,7 +81,16 @@ class Modulo:
 				resp = modulo
 		return resp
 
-
+	@staticmethod
+	def mayor_comentado(lista_cursos):
+		resp = ""
+		obj = None
+		num_comentarios = 0
+		for curso in lista_cursos:
+			for modulo in curso.get_modulos():
+				if(modulo.get_comentarios().lenght() > num_comentarios):
+					obj = modulo
+		return  "curso: " + obj.get_curso().get_id() + " - " obj.get_curso().get_nombre() obj.get_titulo + " | Modulo: " + obj.get_titulo()
 
 
 
